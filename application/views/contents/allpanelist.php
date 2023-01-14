@@ -53,7 +53,7 @@
       </td>
     </tr>
 
-    <?php
+    <?php  
         }
       }
 
@@ -95,7 +95,7 @@
 
                 <div class="form-group">
                   <label>Contact No.</label>
-                  <input class="form-control" name="trfcode" placeholder="SHL-" type="text">
+                  <input class="form-control" name="trfcode" placeholder="SHL-" type  ="text">
                 </div>
 
                 <div class="form-group">
