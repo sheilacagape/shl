@@ -3,7 +3,7 @@
 		  <div class="container-fluid">
 		    <!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">
-		      <a style="pointer-events: none; cursor: default;font-weight: bold;color: white; " class="navbar-brand">DOST Preventive Maintenance</a>
+		      <a style="pointer-events: none; cursor: default;font-weight: bold;color: white; " class="navbar-brand">Shelf Life Laboratory</a>
 		    </div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -29,12 +29,13 @@
 		</nav>
 <div>
 <br><br><br>
+
 	<div class="col-md-2">
 		<div class="list-group">
 		  <a href="#" class="list-group-item active">
 		    <img style="width: 50px; height: 50px; float: left; margin-right: 5px; " src="<?= base_url("assets/img/dot.png") ?>">
 
-		    <h4 class="list-group-item-heading"><?php echo $user[0]->username; ?></h4>
+		    <h4 class="list-group-item-heading"><?php echo $user[0]->firstname.' '.$user[0]->lastname; ?></h4>
 		    <p class="list-group-item-text"><span onclick="location.href='<?php echo base_url();?>main/logout'">Logout</span></p>
 		  </a>
 		</div>
@@ -49,37 +50,26 @@
 			  <!-- <a id="routes" class="list-group-item">Routes</a> -->
 			</div>
 			<div class="list-group" style="">
-				<label>Manage ACU</label>
+				<label>Manage</label>
 			  <!--<a id="farms" class="list-group-item active">Equipment</a> -->
 			  
-			  <a id="tspots" class="list-group-item active" style="cursor: pointer;">ACU List</a>
-			  <a id="oprof" class="list-group-item" style="cursor: pointer;">ACU Maintenance Schedule</a>
-			  <a id="acuchart" class="list-group-item" style="cursor: pointer;">ACU Chart</a>
-			 <a id="mforms" class="list-group-item"  style="cursor: pointer;">Maintenance Forms</a>
+			  <a id="forms" class="list-group-item active" style="cursor: pointer;">Forms</a>
+			  <a id="panelists" class="list-group-item" style="cursor: pointer;">Panelists</a>
 
 			</div>
 
 			<div class="list-group" style="">
-				<label>Manage Vehicle</label>
+				<label>Summary</label>
 			  <!--<a id="farms" class="list-group-item active">Equipment</a> -->
 			  
-			  <a id="listvehicle" class="list-group-item" style="cursor: pointer;">Vehicle List</a>
+			  <a id="responses" class="list-group-item" style="cursor: pointer;">Responses</a>
+			  
 			  <!--
 			  <a id="schedvehicle" class="list-group-item" style="cursor: pointer;">Vehicle Maintenance Schedule</a>
 			  <a id="chartvehicle" class="list-group-item" style="cursor: pointer;">Vehicle Chart</a>
 				-->
 			</div>
 
-			<div class="list-group" style="">
-				<label>Manage Building</label>
-			  <!--<a id="farms" class="list-group-item active">Equipment</a> -->
-			  
-			  <a id="listbldg" class="list-group-item" style="cursor: pointer;">Building List</a>
-			  <!--
-			  <a id="schedbldg" class="list-group-item" style="cursor: pointer;">Building Maintenance Schedule</a>
-			  <a id="chartbldg" class="list-group-item" style="cursor: pointer;">Building Chart</a>
-				-->
-			</div>
 		</div>
 		
 	</div>
@@ -221,12 +211,12 @@
 		// $('.btn-default').click();
 		// alert(name+fee+desc+street+barangay+city+municipality+province);
 		$.ajax({
-			url: 'http://'+window.location.host+'/rstl_pm/main/addFarm',
+			url: 'http://'+window.location.host+'/shl/main/addFarm',
 			type: "POST",
 			data: {"data":loc},
 			success: function(data){
 				// console.log(data);
-				$("#reloadDiv").load('http://'+window.location.host+'/rstl_pm/main/getFarm');
+				$("#reloadDiv").load('http://'+window.location.host+'/shl/main/getFarm');
 				var fade_in = function() {
 					$('#myModal').modal('hide');
 					  // $(".alert").fadeOut().empty();
@@ -275,12 +265,12 @@
 		// $('.btn-default').click();
 		// alert(name+fee+desc+street+barangay+city+municipality+province);
 		$.ajax({
-			url: 'http://'+window.location.host+'/rstl_pm/tspot/addTspot',
+			url: 'http://'+window.location.host+'/shl/tspot/addTspot',
 			type: "POST",
 			data: {"data":loc},
 			success: function(data){
 				console.log(data);
-				$("#reloadDiv").load('http://'+window.location.host+'/rstl_pm/main/getFarm');
+				$("#reloadDiv").load('http://'+window.location.host+'/shl/main/getFarm');
 				var fade_in = function() {
 					$('#myModal').modal('hide');
 					  // $(".alert").fadeOut().empty();
