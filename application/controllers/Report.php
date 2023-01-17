@@ -5,7 +5,7 @@ class Report extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Tspot_model');
-		$this->load->library('Pdf_lib');
+		//$this->load->library('Pdf_lib');
 	}
 
 

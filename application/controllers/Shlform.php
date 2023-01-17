@@ -9,7 +9,7 @@ class Shlform extends Main {
 		parent::__construct();
 		$this->load->model('Shlform_model');
 	
-		$this->load->library('Pdf_lib');
+		//$this->load->library('Pdf_lib');
 	} 
 
 	

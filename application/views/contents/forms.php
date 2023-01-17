@@ -14,7 +14,6 @@
         </button></h2> 
   </div>
  </div>
-  
 <table class="table table-striped table-bordered table-hover" id="esttable">
   <thead style="background-color: lightblue">
     <tr>
