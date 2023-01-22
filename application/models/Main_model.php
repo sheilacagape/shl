@@ -45,6 +45,15 @@ class Main_model extends CI_Model {
 		return $this->db->query($qry);
 	}
 
+	public function addUserAttach($link,$id){
+		
+		$qry = "UPDATE tbl_users SET user_pic='".$link."' WHERE user_id = '".$id."'";
+		// var_dump($qry);
+		return $this->db->query($qry);
+	}
+
+	
+
 
 	public function getType($id) {
 		$qry = "SELECT tbl_equipment.`est_type_id`, tbl_equipment_type.`est_type`, tbl_est_category.`category_name` FROM tbl_equipment

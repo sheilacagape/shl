@@ -8,7 +8,7 @@
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			    <img style="width: 50px; height: 50px; float: right;" src="<?= base_url("assets/img/dot.png") ?>">
+			    <img style="width: 50px; height: 50px; float: right;" src="<?php echo $user[0]->user_pic; ?>">
 
 			    
 				
@@ -33,7 +33,7 @@
 	<div class="col-md-2">
 		<div class="list-group">
 		  <a href="#" class="list-group-item active">
-		    <img style="width: 50px; height: 50px; float: left; margin-right: 5px; " src="<?= base_url("assets/img/dot.png") ?>">
+		    <img style="width: 50px; height: 50px; float: left; margin-right: 5px; " src="<?php echo $user[0]->user_pic; ?>">
 
 		    <h4 class="list-group-item-heading"><?php echo $user[0]->firstname.' '.$user[0]->lastname; ?></h4>
 		    <p class="list-group-item-text"><span onclick="location.href='<?php echo base_url();?>main/logout'">Logout</span></p>

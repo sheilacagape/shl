@@ -116,6 +116,7 @@
           <table class="table table-striped table-bordered table-hover" id="esttable">
             <thead style="background-color: lightblue">
               <tr>
+                <th></th>
                 <th>Panelist ID: </th>
                 <th>Name: </th>
                 
@@ -130,6 +131,8 @@
                   foreach ($panelist as $key) {
               ?>
               <tr>
+                <td><img style="width: 30px; height: 30px; float: right;" src="<?php echo $key->user_pic; ?>"></td>
+                
                 <td><?php echo $key->user_id; ?></td>
                 <td><?php echo $key->firstname." ".$key->lastname; ?></td>
                 <td><?php echo $key->section_unit; ?></td>
@@ -214,6 +217,35 @@
                       </div>
                     </div>
                   </div> 
+
+                  <span data-toggle="tooltip" data-placement="top" title="Upload User Photo" class="glyphicon glyphicon-picture addUserPic color" aria-hidden="true" id="<?php echo($key->user_id.'_addAttach'); ?>" style="cursor: pointer; "></span>
+                  
+                  <div class="modal fade <?php echo($key->user_id.'_addAttach'); ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog ">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="myModalLabel">Add Attachment</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="fupForm" enctype="multipart/form-data">
+                            
+                            <div class="form-group">
+                              <label for="file">File  <small style="color:red;">(Max of 1mb)</small></label>
+                              <input type="file" id="<?php echo($key->user_id.'newAttach'); ?>" class="form-control newAttach" name="file" required />
+                            </div>
+                            <div class="form-group">
+                              <input type="submit" class="btn btn-default modal-btn-add" id="<?php echo($key->user_id.'_savePic'); ?>" name="" value="Add"> 
+                              <input type="button" data-dismiss="modal" class="btn btn-primary modal-btn-close" value="Close" id="">
+                            </div>
+                            
+                            </form>
+                        </div>
+                        
+
+                      </div>
+                    </div>
+                  </div>
                   
                 </td>
               </tr>
@@ -231,6 +263,7 @@
             <table class="table table-striped table-bordered table-hover" id="analysttable">
             <thead style="background-color: lightblue">
               <tr>
+                <th></th>
                 <th>Analyst ID: </th>
                 <th>Name: </th>
                 
@@ -244,6 +277,7 @@
                   foreach ($analyst as $key) {
               ?>
               <tr>
+                <td><img style="width: 30px; height: 30px; float: right;" src="<?php echo $key->user_pic; ?>"></td>
                 <td><?php echo $key->user_id; ?></td>
                 <td><?php echo $key->firstname." ".$key->lastname; ?></td>
                 <td><?php echo $key->section_unit; ?></td>
@@ -328,7 +362,35 @@
                       </div>
                     </div>
                   </div> 
-                 
+                  
+                  <span data-toggle="tooltip" data-placement="top" title="Upload User Photo" class="glyphicon glyphicon-picture addUserPic color" aria-hidden="true" id="<?php echo($key->user_id.'_addAttach'); ?>" style="cursor: pointer; "></span>
+                  
+                  <div class="modal fade <?php echo($key->user_id.'_addAttach'); ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog ">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="myModalLabel">Add Attachment</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="fupForm" enctype="multipart/form-data">
+                            
+                            <div class="form-group">
+                              <label for="file">File <small  style="color:red;">(Max of 1mb)</small> </label>
+                              <input type="file" id="<?php echo($key->user_id.'newAttach'); ?>" class="form-control newAttach" name="file" required />
+                            </div>
+                            <div class="form-group">
+                              <input type="submit" class="btn btn-default modal-btn-add" id="<?php echo($key->user_id.'_savePic'); ?>" name="" value="Add"> 
+                              <input type="button" data-dismiss="modal" class="btn btn-primary modal-btn-close" value="Close" id="">
+                            </div>
+                            
+                            </form>
+                        </div>
+                        
+
+                      </div>
+                    </div>
+                  </div>
                   
                 </td>
               </tr>
@@ -555,4 +617,127 @@
           }
         });
       });
+
+      $('.addUserPic').on('click',function(event){
+        act_id = $(this).attr("id");
+        $("."+act_id).modal('show');
+          
+    });
+
+      $( ".modal-btn-add" ).click(function() {
+        event.preventDefault();
+        
+
+        id = $(this).attr("id");
+        
+        console.log(id);
+        const userid = act_id.split("_")[0]; 
+        console.log('#'+userid+'newAttach');
+        var file_data = $('#'+userid+'newAttach').prop('files')[0];   
+          var form_data = new FormData();                  
+          form_data.append('file', file_data);
+          form_data.append('text', userid);
+          $( ".modal-btn-close" ).click();
+          console.log(form_data);                             
+         
+          $.ajax({
+
+              url: 'http://'+window.location.host+'/shl/upload.php', // <-- point to server-side PHP script 
+
+              dataType: 'text',  // <-- what to expect back from the PHP script, if anything
+              cache: false,
+              contentType: false,
+              processData: false,
+              data: form_data,                         
+              type: 'post',
+              success: function(pathlink){
+                console.log(pathlink);
+                saveToDbFeat(pathlink,userid);
+            
+          },
+          error: function(){
+            
+            var fade_in = function() {
+              // $(".alert").fadeOut().empty();
+              $('.alert').text( "Failed to upload attachment." );
+              $(".alert").show();
+            }
+
+            var fade_out = function() {
+              $(".alert").fadeOut().empty();
+              // $(".alert").show();
+            }
+            setTimeout(fade_in,500);
+            setTimeout(fade_out, 3000);
+          }
+           });
+      });
+
+      
+      // File type validation
+      $(".newAttach").change(function() {
+          var file = this.files[0];
+          var fileType = file.type;
+          var match = ['application/pdf', 'application/msword', 'application/vnd.ms-office', 'image/jpeg', 'image/png', 'image/jpg'];
+          if(!((fileType == match[3]) || (fileType == match[4]) || (fileType == match[5]))){
+              alert('Sorry, only JPG, JPEG, & PNG files are allowed to upload.');
+              $(".newAttach").val('');
+              return false;
+          }
+
+          if(file.size > 1000000){
+              alert('Sorry, please select a smaller image.');
+              $(".newAttach").val('');
+              return false;
+          }
+          console.log((file.size));
+      });
+
+      function saveToDbFeat(data,id){
+        
+        $.ajax({
+            type: 'GET',
+
+            url: 'http://'+window.location.host+'/shl/main/addUserAttach?link='+data+'&id='+id,
+            success: function(data) {
+              // alert(data);
+              $("#reloadDiv").load("http://"+window.location.host+'/shl/main/getAllPanelists');
+              
+              var fade_in = function() {
+              // $(".alert").fadeOut().empty();
+              
+              $('.alert').text( data );
+              $('.modal-backdrop').remove(); // removes the grey overlay.
+              $('body').removeClass('modal-open');
+              $(".alert").show();
+              
+
+            }
+
+            var fade_out = function() {
+              $(".alert").fadeOut().empty();
+              
+            }
+            setTimeout(fade_in,500);
+            setTimeout(fade_out, 3000);
+            
+          },
+          error: function(){
+            
+            var fade_in = function() {
+              // $(".alert").fadeOut().empty();
+              $('.alert').text( "Failed to upload attachment." );
+              $(".alert").show();
+            }
+
+            var fade_out = function() {
+              $(".alert").fadeOut().empty();
+              // $(".alert").show();
+            }
+            setTimeout(fade_in,500);
+            setTimeout(fade_out, 3000);
+          }
+          });
+
+      }
        </script>

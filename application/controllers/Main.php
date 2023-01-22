@@ -177,6 +177,18 @@ class Main extends CI_Controller {
 		}
 	}
 
+	public function addUserAttach(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
+			$link = $this->input->get("link");
+			$id = $this->input->get("id");
+			
+
+			$this->Main_model->addUserAttach($link,$id);
+
+			echo "Successfully uploaded user photo.";	
+		}
+	}
+
 
 	public function logout(){
 		if($this->checkLoggedIn()){
