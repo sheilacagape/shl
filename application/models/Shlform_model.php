@@ -178,7 +178,13 @@ WHERE tbl_eval_form_test.`status` = 1 and tbl_eval_form_test.`id` = '".$id."'";
 	{ 
 		$qry = "UPDATE tbl_paired_difference_test_sample SET sample_code='".$details[3]."', created_by = '".$details[4]."' WHERE pdt_sample_id = '".$details[0]."' AND STATUS = 1";
 		return $this->db->query($qry);
-	}	
+	}
+
+	public function updateFormDetails($details)
+	{ 
+		$qry = "UPDATE tbl_eval_form_test SET product='".$details[2]."', product_code = '".$details[3]."', test_request_no = '".$details[4]."', sample_code = '".$details[5]."' WHERE id = '".$details[0]."' AND STATUS = 1";
+		return $this->db->query($qry);
+	}
 
 	public function updateTTSample($details)
 	{ 

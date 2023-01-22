@@ -31,6 +31,21 @@ class Main_model extends CI_Model {
 		return $result;
 	}
 
+	public function addUser($data){
+		$qry = "INSERT INTO tbl_users (lastname, middlename, firstname, address, section_unit, contact_number, sex, username, access_level) VALUES ('".$data[2]."','".$data[1]."','".$data[0]."','".$data[5]."','".$data[6]."','".$data[4]."','".$data[7]."','".$data[3]."','".$data[8]."')";
+
+		$this->db->query($qry);
+		return $this->db->insert_id();
+	}
+
+	public function updateUserDetails($data){
+		
+		$qry = "UPDATE tbl_users SET lastname='".$data[3]."', middlename='".$data[2]."', firstname='".$data[1]."', address='".$data[6]."', section_unit='".$data[7]."', contact_number='".$data[5]."', sex='".$data[8]."', username='".$data[4]."', access_level='".$data[9]."' WHERE user_id = '".$data[0]."'";
+		// var_dump($qry);
+		return $this->db->query($qry);
+	}
+
+
 	public function getType($id) {
 		$qry = "SELECT tbl_equipment.`est_type_id`, tbl_equipment_type.`est_type`, tbl_est_category.`category_name` FROM tbl_equipment
 JOIN tbl_equipment_type ON tbl_equipment.`est_type_id` = tbl_equipment_type.`est_type_id`
@@ -77,6 +92,13 @@ WHERE tbl_eval_form_test.`status` = 1 and tbl_eval_form_test.`open_for_eval` = 1
 	public function getAllPanelists() { 
 		
 		$qry = "SELECT * FROM tbl_users where access_level = 1";
+		$result = $this->db->query($qry)->result();
+		return $result;
+	}
+
+	public function getAllAnalyst() { 
+		
+		$qry = "SELECT * FROM tbl_users where access_level = 0";
 		$result = $this->db->query($qry)->result();
 		return $result;
 	}	

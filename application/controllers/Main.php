@@ -138,6 +138,8 @@ class Main extends CI_Controller {
 	public function getAllPanelists(){
 		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
 			$data['panelist'] = $this->Main_model->getAllPanelists();
+			$this->db->reconnect();			
+			$data['analyst'] = $this->Main_model->getAllAnalyst();
 			$data['loggedinUser'] = $_SESSION['userid'];
 			$this->load->view('contents/allpanelist',$data);
 		} 
@@ -154,6 +156,27 @@ class Main extends CI_Controller {
 			}
 		}
 	}
+
+	public function addUser(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
+			$data = $this->input->post('data');
+			$this->Main_model->addUser($data);
+			echo "Successfully added new user.";	
+			
+		}
+	}
+
+	
+
+	public function updateUserDetails(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
+			$data = $this->input->post('data');
+			$this->Main_model->updateUserDetails($data);
+			echo "Successfully updated user details.";	
+			
+		}
+	}
+
 
 	public function logout(){
 		if($this->checkLoggedIn()){

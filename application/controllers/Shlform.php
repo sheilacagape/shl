@@ -122,6 +122,22 @@ class Shlform extends Main {
 		}
 	}
 
+	
+	public function updateFormDetails(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
+			$details = $this->input->post('data');
+			if ($details[1] == 1 ) {
+				$this->Shlform_model->updateFormDetails($details);
+			} else if ($details[1] == 2 ) {
+				$this->Shlform_model->updateFormDetails($details);
+			} else {
+
+			}
+			echo $details[0];
+			
+		}
+	}
+
 	public function updateAttrDesc(){
 		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
 			$details = $this->input->post('data');

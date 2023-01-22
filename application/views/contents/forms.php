@@ -87,7 +87,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
 
                 </button>
-                 <h4 class="modal-title" id="myACModalLabel">Add New AC</h4>
+                 <h4 class="modal-title" id="myACModalLabel">Add New Evaluation Form</h4>
 
             </div>
             <div class="modal-body">
@@ -107,22 +107,22 @@
                             </div>
 
                             <div class="form-group">
-                              <label>Sample Name</label>
-                              <input class="form-control" name="samplename" placeholder="Sample Name" type="text">
+                              <label>Product Name</label>
+                              <input class="form-control" name="samplename" placeholder="Product Name" type="text">
                             </div>
                             
                             <div class="form-group">
-                              <label>Product Code</label>
-                              <input class="form-control" name="samplecode" placeholder="Product Code" type="text">
+                              <label>Laboratory Code #</label>
+                              <input class="form-control" name="samplecode" placeholder="Laboratory Code #" type="text">
                             </div>
                             
                             <div class="form-group">
-                              <label>Test Request Number</label>
+                              <label>Request Number</label>
                               <input class="form-control" name="trfno" placeholder="R10-2022-SHL-" type="text">
                             </div>
 
                             <div class="form-group">
-                              <label>Sample Code</label>
+                              <label>Sample Description Code</label>
                               <input class="form-control" name="trfcode" placeholder="SHL-" type="text">
                             </div>
                            

@@ -82,6 +82,15 @@
 
       </div>
 
+      <div class="list-group" style="">
+        <label>History</label>
+        <!--<a id="farms" class="list-group-item active">Equipment</a> -->
+        
+        <a id="closedforms" class="list-group-item " style="cursor: pointer;">Submitted Evaluations</a>
+        
+
+      </div>
+
 
     </div>
     
