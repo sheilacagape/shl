@@ -32,16 +32,16 @@ echo '<html>
         
      </div>
   
-      <table >
+      <table style="border: 1px solid;" cellspacing="0" cellpadding="1" border="1">
       <thead>
         <tr>
-          <th style="font-size: 12px; "><strong>Name: </strong>'.$panelistdata[0]->lastname.', '.$panelistdata[0]->firstname.'</th>
-          <th style="font-size: 12px; "><strong>Product: </strong>'.$formdata[0]->product.'</th>
+          <th colspan="3" style="font-size: 12px; "><strong>Name: </strong>'.$panelistdata[0]->lastname.', '.$panelistdata[0]->firstname.'</th>
+          <th colspan="3" style="font-size: 12px; "><strong>Product: </strong>'.$formdata[0]->product.'</th>
           
         </tr>
         <tr>
-          <th style="font-size: 12px; "><strong>Panelist No.: </strong>'.$panelistdata[0]->user_id.'</th>
-          <th style="font-size: 12px; "><strong>Date: </strong></th>
+          <th colspan="3" style="font-size: 12px; "><strong>Panelist No.: </strong>'.$panelistdata[0]->user_id.'</th>
+          <th colspan="3" style="font-size: 12px; "><strong>Date: </strong></th>
           
         </tr>
       </thead>
@@ -51,64 +51,95 @@ echo '<html>
         echo  '
           <tr>
             <br>
-            <td colspan="2" style="font-size: 10px; ">Instruction:
+            <td colspan="6" style="font-size: 10px; ">Instruction:
             <br>
             <br>
             You are given a pair of coded samples. Please place a check (/) mark under the appropriate row and  write down any comments.
             </td>
             
           </tr>
-          <tr>
-          <br>
-            <td rowspan="2" style="text-align: center; font-size: 10px; "><strong>Sample Code</strong></td>
-            <td colspan="5" rowspan="1" style="text-align: center;font-size: 10px; "><strong>Sample Preffered</strong></td>
-          </tr>
-          <tr>';
-                $table = "";
-                  if (isset($formAttr)) {
-                    
-                    for ($i=0; $i < count($formAttr); $i++) {
-                      $table.= '<th rowspan="1"><p >'.$formAttr[$i]->attr_desc.'</p></th>';
-                    }
-                  }
-                echo $table;
+         <tr>
+<th rowspan="2"><strong>Sample Code</strong></th>
+<th colspan="5"><strong>Sample Preffered</strong></th>
+
+</tr>
+<tr>';
+  if (isset($formAttr[0])) {
+    
+    echo '<th ><p >'.$formAttr[0]->attr_desc.'</p></th>';
+  }
+  if (isset($formAttr[1])) {
+    
+    echo '<th ><p >'.$formAttr[1]->attr_desc.'</p></th>';
+  }
+  if (isset($formAttr[2])) {
+    
+    echo '<th ><p >'.$formAttr[2]->attr_desc.'</p></th>';
+  }
+  if (isset($formAttr[3])) {
+    
+    echo '<th ><p >'.$formAttr[3]->attr_desc.'</p></th>';
+  }
+  if (isset($formAttr[4])) {
+    
+    echo '<th ><p >'.$formAttr[4]->attr_desc.'</p></th>';
+  }
+ 
 
               echo '</tr>
           <tr>
-            <td style="text-align: center; font-size: 10px; ">'.$oneFormSamples[0]->sample_code.'</td><td>';
-            
+            <td style="text-align: center; font-size: 10px; ">'.$oneFormSamples[0]->sample_code.'</td>';
             if(isset($answer[0])){
               if ($oneFormSamples[0]->pdt_sample_id == $answer[0]->pdt_sample_odd_id) {
-                
-                echo '<u style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</u>';
+                echo '<td ><p ><u style="text-align: center;">/</u></p></td>';
               } else {
-              
-              echo'<u style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>';
-              
+              echo '<td ><p ></p></td>';
               }
             }
-              
-          echo '</td></tr>
-          <tr>
-            <td style="text-align: center; font-size: 10px; ">'.$oneFormSamples[1]->sample_code.'</td><td>';
+            if(isset($answer[1])){
+              if ($oneFormSamples[0]->pdt_sample_id == $answer[1]->pdt_sample_odd_id) {
+                echo '<td ><p ><u style="text-align: center;">/</u></p></td>';
+              } else {
+              echo '<td ><p ></p></td>';
+              }
+            }
+            if(isset($answer[2])){
+              if ($oneFormSamples[0]->pdt_sample_id == $answer[2]->pdt_sample_odd_id) {
+                echo '<td ><p ><u style="text-align: center;">/</u></p></td>';
+              } else {
+              echo '<td ><p ></p></td>';
+              }
+            }
+            if(isset($answer[3])){
+              if ($oneFormSamples[0]->pdt_sample_id == $answer[3]->pdt_sample_odd_id) {
+                echo '<td ><p ><u style="text-align: center;">/</u></p></td>';
+              } else {
+              echo '<td ><p ></p></td>';
+              }
+            }
+            if(isset($answer[4])){
+              if ($oneFormSamples[0]->pdt_sample_id == $answer[4]->pdt_sample_odd_id) {
+                echo '<td ><p ><u style="text-align: center;">/</u></p></td>';
+              } else {
+              echo '<td ><p ></p></td>';
+              }
+            }
             
-            if(isset($answer[0])){
-              if ($oneFormSamples[1]->pdt_sample_id == $answer[0]->pdt_sample_odd_id) {
-                
-                echo '<u style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</u>';
-              } else {
               
-              echo'<u style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>';
-              
-              }
-            }
-              
-          echo '</td></tr>
+          echo '</tr>
+          <tr>
+            <td style="text-align: center; font-size: 10px; ">'.$oneFormSamples[1]->sample_code.'</td>';
+              echo '<td ><p ></p></td>';
+            echo '<td ><p ></p></td>';
+            echo '<td ><p ></p></td>';
+            echo '<td ><p ></p></td>';
+            echo '<td ><p ></p></td>';
+          echo '</tr>
           <tr>
             <br>
-            <td colspan="2" style="font-size: 10px; "><strong>Comments</strong>
+            <td colspan="6" style="font-size: 10px; "><strong>Comments</strong>
             <br>
-            '.var_dump($answer).'
+            '.var_dump($formAttr).'
             
             </td>
             

@@ -266,6 +266,7 @@ class Shlform extends Main {
 				}
 				
 			    $data['docTitle'] = $this->Shlform_model->getOneForm($fid);
+			    
 			    $this->load->view('contents/pdtreport',$data);
 			    
 			   } else if ($ftid == 2 ) {
