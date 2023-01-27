@@ -88,58 +88,117 @@ echo '<html>
 
               echo '</tr>
           <tr>
-            <td style="text-align: center; font-size: 10px; ">'.$oneFormSamples[0]->sample_code.'</td>';
+            <td style="text-align: center; font-size: 10px; ">'.$oneFormSamples[0]->sample_code.'</td>
+            <td ><p ><u style="text-align: center;">';
             if(isset($answer[0])){
               if ($oneFormSamples[0]->pdt_sample_id == $answer[0]->pdt_sample_odd_id) {
-                echo '<td ><p ><u style="text-align: center;">/</u></p></td>';
+                echo '/';
               } else {
-              echo '<td ><p ></p></td>';
+              echo '';
               }
             }
+            echo '</u></p></td>';
+
+            echo '<td ><p ><u style="text-align: center;">';
             if(isset($answer[1])){
               if ($oneFormSamples[0]->pdt_sample_id == $answer[1]->pdt_sample_odd_id) {
-                echo '<td ><p ><u style="text-align: center;">/</u></p></td>';
+                echo '/';
               } else {
-              echo '<td ><p ></p></td>';
+              echo '';
               }
             }
+            echo '</u></p></td>';
+
+            echo '<td ><p ><u style="text-align: center;">';
             if(isset($answer[2])){
               if ($oneFormSamples[0]->pdt_sample_id == $answer[2]->pdt_sample_odd_id) {
-                echo '<td ><p ><u style="text-align: center;">/</u></p></td>';
+                echo '/';
               } else {
-              echo '<td ><p ></p></td>';
+              echo '';
               }
             }
+            echo '</u></p></td>';
+
+            echo '<td ><p ><u style="text-align: center;">';
             if(isset($answer[3])){
               if ($oneFormSamples[0]->pdt_sample_id == $answer[3]->pdt_sample_odd_id) {
-                echo '<td ><p ><u style="text-align: center;">/</u></p></td>';
+                echo '/';
               } else {
-              echo '<td ><p ></p></td>';
+              echo '';
               }
             }
+            echo '</u></p></td>';
+
+            echo '<td ><p ><u style="text-align: center;">';
             if(isset($answer[4])){
               if ($oneFormSamples[0]->pdt_sample_id == $answer[4]->pdt_sample_odd_id) {
-                echo '<td ><p ><u style="text-align: center;">/</u></p></td>';
+                echo '/';
               } else {
-              echo '<td ><p ></p></td>';
+              echo '';
               }
             }
-            
+            echo '</u></p></td>';
               
           echo '</tr>
           <tr>
             <td style="text-align: center; font-size: 10px; ">'.$oneFormSamples[1]->sample_code.'</td>';
-              echo '<td ><p ></p></td>';
-            echo '<td ><p ></p></td>';
-            echo '<td ><p ></p></td>';
-            echo '<td ><p ></p></td>';
-            echo '<td ><p ></p></td>';
+            
+            echo '<td ><p ><u style="text-align: center;">';
+            if(isset($answer[0])){
+              if ($oneFormSamples[1]->pdt_sample_id == $answer[0]->pdt_sample_odd_id) {
+                echo '/';
+              } else {
+              echo '';
+              }
+            }
+            echo '</u></p></td>';   
+
+            echo '<td ><p ><u style="text-align: center;">';
+            if(isset($answer[1])){
+              if ($oneFormSamples[1]->pdt_sample_id == $answer[1]->pdt_sample_odd_id) {
+                echo '/';
+              } else {
+              echo '';
+              }
+            }
+            echo '</u></p></td>';   
+
+            echo '<td ><p ><u style="text-align: center;">';
+            if(isset($answer[2])){
+              if ($oneFormSamples[1]->pdt_sample_id == $answer[2]->pdt_sample_odd_id) {
+                echo '/';
+              } else {
+              echo '';
+              }
+            }
+            echo '</u></p></td>';   
+
+            echo '<td ><p ><u style="text-align: center;">';
+            if(isset($answer[3])){
+              if ($oneFormSamples[1]->pdt_sample_id == $answer[3]->pdt_sample_odd_id) {
+                echo '/';
+              } else {
+              echo '';
+              }
+            }
+            echo '</u></p></td>';   
+
+            echo '<td ><p ><u style="text-align: center;">';
+            if(isset($answer[4])){
+              if ($oneFormSamples[1]->pdt_sample_id == $answer[4]->pdt_sample_odd_id) {
+                echo '/';
+              } else {
+              echo '';
+              }
+            }
+            echo '</u></p></td>';            
+
           echo '</tr>
           <tr>
             <br>
             <td colspan="6" style="font-size: 10px; "><strong>Comments</strong>
             <br>
-            '.var_dump($formAttr).'
+            '.$answer[0]->comments.'
             
             </td>
             

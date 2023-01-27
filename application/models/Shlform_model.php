@@ -239,10 +239,10 @@ JOIN tbl_triangle_test_sample ON tbl_triangle_test_answers.`panelist_id` = tbl_t
 	public function getOneEvalAnswers($id,$ftid)
 	{
 		if($ftid == 1) {
-			$qry = "SELECT * FROM tbl_paired_difference_answers
+			$qry = "SELECT * FROM tbl_users
+LEFT JOIN tbl_paired_difference_answers ON tbl_paired_difference_answers.`panelist_id` = tbl_users.`user_id`
 JOIN tbl_eval_form_test ON tbl_paired_difference_answers.`pdt_form_id` = tbl_eval_form_test.`id`
-JOIN tbl_users ON tbl_paired_difference_answers.`panelist_id` = tbl_users.`user_id`
- WHERE pdt_form_id = '".$id."'";
+ WHERE pdt_form_id = '".$id."' GROUP BY tbl_users.`user_id`";
 		} else if ($ftid == 2){
 			$qry = "SELECT * FROM tbl_triangle_test_answers
 JOIN tbl_users ON tbl_triangle_test_answers.`panelist_id` = tbl_users.`user_id`

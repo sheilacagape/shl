@@ -246,6 +246,7 @@ class Shlform extends Main {
 			$aid = $this->input->get('t_id');
 			$ftid = $this->input->get('ftid');
 			$fid = $this->input->get('formid');
+			$userid = $this->input->get('userid');
 			
 			
 			if ($ftid == 1 ) {
@@ -253,9 +254,9 @@ class Shlform extends Main {
 				$this->db->reconnect();
 			    $data['oneFormSamples'] = $this->Shlform_model->getOneFormSamples($data['formdata'][0]->id,1);
 				$this->db->reconnect();
-				$data['panelistdata'] = $this->Shlform_model->getPanelistData($_SESSION['userid']);
+				$data['panelistdata'] = $this->Shlform_model->getPanelistData($userid);
 				$this->db->reconnect();
-				$data['answer'] = $this->Shlform_model->getPanelistAnswer($_SESSION['userid'],$fid,1);
+				$data['answer'] = $this->Shlform_model->getPanelistAnswer($userid,$fid,1);
 				$this->db->reconnect();
 				$data['formAttr'] = $this->Shlform_model->getFormAttr($fid);
 				$data['activeAttr'] = 0;
