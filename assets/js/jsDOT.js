@@ -15,7 +15,11 @@ $(document).ready(function(){
 
     $("#openforms").click(function(){
         $("#reloadDiv").load("http://"+window.location.host+"/shl/main/getOpenForms");
-    });
+    }); 
+
+    $("#closedforms").click(function(){
+        $("#reloadDiv").load("http://"+window.location.host+"/shl/main/getClosedForms");
+    }); 
 
     $("#openforms").click();  
 

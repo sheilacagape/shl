@@ -89,6 +89,22 @@ WHERE tbl_eval_form_test.`status` = 1 and tbl_eval_form_test.`open_for_eval` = 1
 		return $this->db->query($qry)->result();	
 	}
 
+	public function getClosedForms($userid){
+		$qry = "SELECT tbl_eval_form_test.*, tbl_paired_difference_answers.pda_id, tbl_form_type.`test_type` , tbl_form_type.`id` AS 'fid'
+FROM tbl_eval_form_test JOIN tbl_paired_difference_answers ON tbl_eval_form_test.`id` = tbl_paired_difference_answers.`pdt_form_id`
+JOIN tbl_form_type ON tbl_eval_form_test.`form_type_id` = tbl_form_type.`id`
+WHERE tbl_paired_difference_answers.`panelist_id` = '".$userid."'
+GROUP BY tbl_eval_form_test.id
+UNION
+SELECT tbl_eval_form_test.*, tbl_triangle_test_answers.`tta_id` , tbl_form_type.`test_type` , tbl_form_type.`id` AS 'fid'
+FROM tbl_eval_form_test JOIN tbl_triangle_test_answers ON tbl_eval_form_test.id = tbl_triangle_test_answers.`tt_form_id`
+JOIN tbl_form_type ON tbl_eval_form_test.`form_type_id` = tbl_form_type.`id`
+WHERE tbl_triangle_test_answers.`panelist_id` = '".$userid."'
+GROUP BY tbl_eval_form_test.id";
+
+		return $this->db->query($qry)->result();	
+	}
+
 	public function getAllResponses($ftid) { 
 		if($ftid == 1) {
 			$qry = "";

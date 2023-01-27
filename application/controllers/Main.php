@@ -125,6 +125,17 @@ class Main extends CI_Controller {
 		
 	} 
 
+	public function getClosedForms(){
+		// echo "string";
+		if($this->checkLoggedIn() && ($_SESSION['access']==1)){
+			$data['forms'] = $this->Main_model->getClosedForms($_SESSION['userid']);
+			$this->db->reconnect();			
+			$data['user'] = $this->Main_model->getUser($_SESSION['userid']); 
+			$this->load->view('contents/closeforms',$data);
+		} 
+		
+	} 
+
 	public function getAllResponses(){
 		// echo "string";
 		if($this->checkLoggedIn() && ($_SESSION['access']==0)){

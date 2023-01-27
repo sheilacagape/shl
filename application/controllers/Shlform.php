@@ -286,6 +286,51 @@ class Shlform extends Main {
 		}
 	}
 
+	public function printpanelresponse(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==1)){
+			$aid = $this->input->get('t_id');
+			$ftid = $this->input->get('ftid');
+			$fid = $this->input->get('formid');
+			$userid = $this->input->get('userid');
+			
+			
+			if ($ftid == 1 ) {
+			    $data['formdata'] = $this->Shlform_model->getOneForm($fid);
+				$this->db->reconnect();
+			    $data['oneFormSamples'] = $this->Shlform_model->getOneFormSamples($data['formdata'][0]->id,1);
+				$this->db->reconnect();
+				$data['panelistdata'] = $this->Shlform_model->getPanelistData($userid);
+				$this->db->reconnect();
+				$data['answer'] = $this->Shlform_model->getPanelistAnswer($userid,$fid,1);
+				$this->db->reconnect();
+				$data['formAttr'] = $this->Shlform_model->getFormAttr($fid);
+				$data['activeAttr'] = 0;
+				for ($i=0; $i < count($data['formAttr']); $i++) { 
+					if ($data['formAttr'][$i]->status == "1") {
+						$data['activeAttr'] += 1;
+					}
+				}
+				
+			    $data['docTitle'] = $this->Shlform_model->getOneForm($fid);
+			    
+			    $this->load->view('contents/pdtreport',$data);
+			    
+			   } else if ($ftid == 2 ) {
+			    $data['formdata'] = $this->Shlform_model->getOneForm($fid);
+			    $this->db->reconnect();
+			    $data['answer'] = $this->Shlform_model->getAnswer($aid,2,$data['formdata'][0]->id);
+			    $this->db->reconnect();
+			    $data['oneFormSamples'] = $this->Shlform_model->getOneFormSamples($fid,2,$data['answer'][0]->panelist_id,$data['answer'][0]->tt_instance_id);
+			    $this->db->reconnect();
+			    $data['panelistdata'] = $this->Shlform_model->getPanelistData($data['answer'][0]->panelist_id);
+			    $this->load->view('contents/ttreport',$data); 
+			    
+			   } else {
+			   		
+			   }
+		}
+	}
+
 	public function checkLoggedIn(){
 		if(isset($_SESSION['un']) && isset($_SESSION['pass']) == true) {
 			return true;
