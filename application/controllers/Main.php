@@ -146,6 +146,16 @@ class Main extends CI_Controller {
 		
 	} 
 
+	public function getAllResponsesAnaView(){
+		// echo "string";
+		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
+			$data['forms'] = $this->Main_model->getActiveForms();
+			$this->db->reconnect();	
+			$this->load->view('contents/analystresponseview',$data);
+		} 
+		
+	} 
+
 	public function getAllPanelists(){
 		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
 			$data['panelist'] = $this->Main_model->getAllPanelists();

@@ -31,6 +31,12 @@ $(document).ready(function(){
         $("#reloadDiv").load("http://"+window.location.host+"/shl/main/getAllResponses");
     });
 
+    $("#summary").click(function(){
+        $("#reloadDiv").load("http://"+window.location.host+"/shl/main/getAllResponsesAnaView");
+    });
+
+    
+
     $("#panelists").click(function(){
         $("#reloadDiv").load("http://"+window.location.host+"/shl/main/getAllPanelists");
     });
