@@ -221,6 +221,26 @@ class Shlform extends Main {
 			
 		}
 	}
+
+	public function seeEvaluationSummary(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
+			$id = $this->input->post('id');
+			$ftid = $this->input->post('ftid');
+			$data['id'] = $id;
+			$data['ftid'] = $ftid;
+			if ($ftid == 1 ) {
+				$data['pdtanswers'] = $this->Shlform_model->getOneEvalAnswers($id,$ftid);
+				$this->load->view('contents/pdtresult',$data);
+			} else if ($ftid == 2 ) {
+				$data['ttanswers'] = $this->Shlform_model->getOneEvalAnswers($id,$ftid);
+				$this->load->view('contents/ttresult',$data);
+			} else {
+
+			}
+			
+			
+		}
+	}
 	
 	public function submitAnswer(){
 		if($this->checkLoggedIn() && ($_SESSION['access']==1)){
