@@ -80,11 +80,24 @@ WHERE tbl_eval_form_test.`status` = 1";
 		return $this->db->query($qry)->result();	
 	}
 
-	public function getOpenForms(){
+	public function getOpenForms($userid){
 		$qry = "SELECT tbl_eval_form_test.*, tbl_form_type.`test_type`,tbl_users.* FROM tbl_eval_form_test 
 JOIN tbl_form_type ON tbl_eval_form_test.`form_type_id` = tbl_form_type.`id`
 LEFT JOIN tbl_users ON tbl_eval_form_test.`created_by` = tbl_users.`user_id`
-WHERE tbl_eval_form_test.`status` = 1 and tbl_eval_form_test.`open_for_eval` = 1";
+WHERE tbl_eval_form_test.`status` = 1 AND tbl_eval_form_test.`open_for_eval` = 1 
+AND tbl_eval_form_test.id NOT IN(
+
+SELECT tbl_eval_form_test.id
+FROM tbl_eval_form_test JOIN tbl_paired_difference_answers ON tbl_eval_form_test.`id` = tbl_paired_difference_answers.`pdt_form_id`
+JOIN tbl_form_type ON tbl_eval_form_test.`form_type_id` = tbl_form_type.`id`
+WHERE tbl_paired_difference_answers.`panelist_id` = '".$userid."'
+GROUP BY tbl_eval_form_test.id
+UNION
+SELECT tbl_eval_form_test.id
+FROM tbl_eval_form_test JOIN tbl_triangle_test_answers ON tbl_eval_form_test.id = tbl_triangle_test_answers.`tt_form_id`
+JOIN tbl_form_type ON tbl_eval_form_test.`form_type_id` = tbl_form_type.`id`
+WHERE tbl_triangle_test_answers.`panelist_id` = '".$userid."'
+GROUP BY tbl_eval_form_test.id)";
 
 		return $this->db->query($qry)->result();	
 	}

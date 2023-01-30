@@ -63,7 +63,7 @@
 			  <!--<a id="farms" class="list-group-item active">Equipment</a> -->
 			  
 			  <a id="responses" class="list-group-item" style="cursor: pointer;">Individual Responses</a>
-			  <a id="summary" class="list-group-item" style="cursor: pointer;">Analyst Summary</a>
+			  <a id="summary" class="list-group-item" style="cursor: pointer;">Overall Summary</a>
 			  
 			  <!--
 			  <a id="schedvehicle" class="list-group-item" style="cursor: pointer;">Vehicle Maintenance Schedule</a>
