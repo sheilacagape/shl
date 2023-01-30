@@ -233,6 +233,7 @@ class Shlform extends Main {
 				$this->load->view('contents/pdtresult',$data);
 			} else if ($ftid == 2 ) {
 				$data['ttanswers'] = $this->Shlform_model->getOneEvalAnswers($id,$ftid);
+				$data['triad'] = $this->Shlform_model->getTriads($id);
 				$this->load->view('contents/ttresult',$data);
 			} else {
 

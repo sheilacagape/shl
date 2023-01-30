@@ -90,7 +90,7 @@ AND tbl_eval_form_test.id NOT IN(
 SELECT tbl_eval_form_test.id
 FROM tbl_eval_form_test JOIN tbl_paired_difference_answers ON tbl_eval_form_test.`id` = tbl_paired_difference_answers.`pdt_form_id`
 JOIN tbl_form_type ON tbl_eval_form_test.`form_type_id` = tbl_form_type.`id`
-WHERE tbl_paired_difference_answers.`panelist_id` = '".$userid."'
+WHERE tbl_paired_difference_answers.`panelist_id` = '".$userid."'	
 GROUP BY tbl_eval_form_test.id
 UNION
 SELECT tbl_eval_form_test.id

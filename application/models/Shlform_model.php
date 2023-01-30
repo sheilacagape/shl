@@ -109,6 +109,16 @@ class Shlform_model extends CI_Model {
 		return $this->db->query($qry)->result();
 	}
 
+	public function getTriads($id)
+	{ 
+		$qry = "SELECT * FROM tbl_triad_codes 
+JOIN tbl_triangle_test_sample
+ON tbl_triad_codes.`triangle_tid` = tbl_triangle_test_sample.`tt_id`
+WHERE tbl_triad_codes.`triangle_tid` =  '".$id."'
+GROUP BY tbl_triad_codes.`triad_code_id`";	
+		return $this->db->query($qry)->result();
+	}
+
 	public function updateTriadCodes($triads,$triadsid){
 		$qry = "UPDATE tbl_triad_codes SET triad_code = '".$triads."' WHERE triad_code_id = '".$triadsid."'";	
 
@@ -247,7 +257,8 @@ JOIN tbl_eval_form_test ON tbl_paired_difference_answers.`pdt_form_id` = tbl_eva
 			$qry = "SELECT * FROM tbl_triangle_test_answers
 JOIN tbl_users ON tbl_triangle_test_answers.`panelist_id` = tbl_users.`user_id`
 JOIN tbl_eval_form_test ON tbl_triangle_test_answers.`tt_form_id` = tbl_eval_form_test.`id`
-WHERE tbl_triangle_test_answers.`tt_form_id` =  '".$id."' ";
+WHERE tbl_triangle_test_answers.`tt_form_id` = '".$id."'
+ORDER BY tt_sample_odd_id   ";
 		} else {
 
 		}

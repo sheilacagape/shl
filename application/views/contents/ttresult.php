@@ -15,12 +15,15 @@
  <div class="row col-md-12">
  	
  	<div class="col-md-12 sidetripDetails"> 
- 		<h5>Request No.: ________________________</h5>
-		<h5>Laboratory Code No.: ________________________</h5>
-		<h5>Sample Description/Code: ________________________</h5>
+ 		<h5>Request No.: <u><?php echo ($ttanswers[0]->test_request_no) ?></u></h5>
+		<h5>Laboratory Code No.: <u><?php echo ($ttanswers[0]->sample_code) ?></u></h5>
+		<h5>Sample Description/Code: <u><?php echo ($ttanswers[0]->product_code) ?></u></h5>
 		<h5>Date of Computation: ________________________</h5>
  		<br>
  	</div>
+ 	<?php var_dump($ttanswers) ?>
+ 	<br>
+ 	<?php var_dump($ttanswers) ?>
  	
  	<div class="col-md-12 sidetripDetails"> 
  		<div class="row col-md-12">
@@ -45,9 +48,42 @@
 			 						?>
 			 						<tr>
 					 					<td><?php echo $i+1; ?></td>
-					 					<td></td>
-					 					<td></td>
-					 					<td></td>
+					 					<td>
+					 						<?php
+					 							if (isset($ttanswers[$i])) {
+					 								echo $i+1;
+					 							} else {
+					 								echo "<em>N/A</em>";
+					 							}
+					 							  ?>
+					 						</td>
+
+					 					<td>
+					 						<?php
+					 							if (isset($ttanswers[$i])) {
+					 								if ($ttanswers[$i]->tt_sample_odd_id == $triad[(($i+1)*3)-1]->triad_code_id) {
+					 									echo $ttanswers[$i]->tt_sample_odd_id;
+					 									echo "<br>";
+					 									echo $triad[(($i+1)*3)-1]->triad_code_id;
+					 								}
+					 							} else {
+					 								echo "<em>N/A</em>";
+					 							}
+					 							  ?>
+					 					</td>
+					 					<td>
+					 						<?php
+					 							if (isset($ttanswers[$i])) {
+					 								if ($ttanswers[$i]->tt_sample_odd_id != $triad[(($i+1)*3)-1]->triad_code_id) {
+					 									echo $ttanswers[$i]->tt_sample_odd_id;
+					 									echo "<br>";
+					 									echo $triad[(($i+1)*3)-1]->triad_code_id;
+					 								}
+					 							} else {
+					 								echo "<em>N/A</em>";
+					 							}
+					 							  ?>
+					 					</td>
 					 				</tr>
 			 						<?php
 			 					}
