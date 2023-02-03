@@ -111,10 +111,6 @@
                               <input class="form-control" name="samplename" placeholder="Product Name" type="text">
                             </div>
                             
-                            <div class="form-group">
-                              <label>Laboratory Code #</label>
-                              <input class="form-control" name="samplecode" placeholder="Laboratory Code #" type="text">
-                            </div>
                             
                             <div class="form-group">
                               <label>Request Number</label>
@@ -177,12 +173,11 @@
         $("#myFormModal").modal('hide');
         var type = $("#type").val();
         var name = $("input[name=samplename]").val();
-        var code = $("input[name=samplecode]").val();
         var userid = $("input[name=userid]").val();
         var trfno = $("input[name=trfno]").val();
         var trfcode = $("input[name=trfcode]").val();
         
-        var formdata = new Array(type,name,code,userid,trfno,trfcode);
+        var formdata = new Array(type,name,userid,trfno,trfcode);
         console.log(formdata);
         $.ajax({
           url: 'http://'+window.location.host+'/shl/shlform/createForm',

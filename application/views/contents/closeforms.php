@@ -39,11 +39,12 @@
         <?php 
           if ($key->fid == 1) {
             ?>
-            <a target="_blank" href="<?= base_url('shlform/printpanelresponse?t_id='.$key->pda_id.'&ftid='.$key->fid.'&formid='.$key->id.'&userid='.$user[0]->user_id) ;?>" >VIEW <span data-toggle="tooltip" data-placement="top" title="Print Response"  class="glyphicon glyphicon-print printresponse color" aria-hidden="true" id="<?php echo($key->pda_id); ?>" style="cursor: pointer; color: green;"></span> &nbsp; </span></a>
+            <span data-toggle="tooltip" data-placement="top" title="View Answer" class="glyphicon glyphicon-eye-open viewFormPanel color" aria-hidden="true" id="<?php echo($key->id); ?>" style="cursor: pointer; "></span> &nbsp;
             <?php
           } else {
             ?>
-            <a target="_blank" href="<?= base_url('shlform/printpanelresponse?t_id='.$key->pda_id.'&ftid='.$key->fid.'&formid='.$key->id) ;?>" >VIEW <span data-toggle="tooltip" data-placement="top" title="Print Response"  class="glyphicon glyphicon-print printresponse color" aria-hidden="true" id="<?php echo($key->pda_id); ?>" style="cursor: pointer; color: green;"></span> &nbsp; </span></a>
+            <span data-toggle="tooltip" data-placement="top" title="View Answer" class="glyphicon glyphicon-eye-open viewFormPanel color" aria-hidden="true" id="<?php echo($key->id); ?>" style="cursor: pointer; "></span> &nbsp;
+            
             <?php
           }
           
@@ -64,5 +65,10 @@
 
 
     <script type="text/javascript">
+      $('.viewFormPanel').click(function(){
+          var id = $(this).attr('id');
+          console.log(id);
+           $("#reloadDiv").load('http://'+window.location.host+'/shl/shlform/getOneFormSheet',{id:id});
+        });
     
     </script>

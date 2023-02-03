@@ -67,7 +67,7 @@
           <button id="editformdata" type="button" style="float: right; " class="btn btn-info btn-xs">Edit Form Details</button>
           <strong>Request Number: </strong><em><?php echo $oneForm[0]->test_request_no; ?></em>
           <br><strong>Product Name: </strong><em><?php echo $oneForm[0]->product; ?></em>
-          <br><strong>Laboratory Code: </strong><em><?php echo $oneForm[0]->product_code; ?></em>
+          
           <br><strong>Sample Description Code: </strong><em><?php echo $oneForm[0]->sample_code; ?></em>
           
         </div>
@@ -81,10 +81,6 @@
                 <input class="form-control" name="usamplename" placeholder="Product Name" type="text" value="<?php echo $oneForm[0]->product; ?>">
               </div>
               
-              <div class="form-group">
-                <label>Laboratory Code #</label>
-                <input class="form-control" name="usamplecode" placeholder="Laboratory Code #" type="text" value="<?php echo $oneForm[0]->product_code; ?>">
-              </div>
               
               <div class="form-group">
                 <label>Request Number</label>
@@ -393,11 +389,11 @@ $('.editsample').on('click',function(){
     var ttid = $("input[name=ttid").val();
     var ftid = $("input[name=ftid").val();
     var name = $("input[name=usamplename]").val();
-    var code = $("input[name=usamplecode]").val();
+    
     var trfno = $("input[name=utrfno]").val();
     var trfcode = $("input[name=utrfcode]").val();
     
-    var formdata = new Array(ttid,ftid,name,code,trfno,trfcode);
+    var formdata = new Array(ttid,ftid,name,trfno,trfcode);
     console.log(formdata);
     $("#collapsethis").click();
     $("#showformdetails").show();

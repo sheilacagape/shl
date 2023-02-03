@@ -40,7 +40,7 @@ class Main_model extends CI_Model {
 
 	public function updateUserDetails($data){
 		
-		$qry = "UPDATE tbl_users SET lastname='".$data[3]."', middlename='".$data[2]."', firstname='".$data[1]."', address='".$data[6]."', section_unit='".$data[7]."', contact_number='".$data[5]."', sex='".$data[8]."', username='".$data[4]."', access_level='".$data[9]."' WHERE user_id = '".$data[0]."'";
+		$qry = "UPDATE tbl_users SET lastname='".$data[3]."', middlename='".$data[2]."', firstname='".$data[1]."', address='".$data[6]."', section_unit='".$data[7]."', contact_number='".$data[5]."', sex='".$data[8]."', username='".$data[4]."', access_level='".$data[9]."', username='".$data[10]."', password='".$data[11]."' WHERE user_id = '".$data[0]."'";
 		// var_dump($qry);
 		return $this->db->query($qry);
 	}

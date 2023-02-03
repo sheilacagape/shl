@@ -8,7 +8,7 @@ class Shlform_model extends CI_Model {
 		
 	}
 	public function addNewForm($adr){
-		$qry = "INSERT INTO tbl_eval_form_test (form_type_id, product, product_code, created_by, test_request_no,sample_code) VALUES ('$adr[0]','$adr[1]','$adr[2]','$adr[3]','$adr[4]','$adr[5]')";
+		$qry = "INSERT INTO tbl_eval_form_test (form_type_id, product, created_by, test_request_no,sample_code) VALUES ('$adr[0]','$adr[1]','$adr[2]','$adr[3]','$adr[4]')";
 		$this->db->query($qry);
 		return $this->db->insert_id();
 		// return ($qry);
@@ -192,7 +192,7 @@ WHERE tbl_eval_form_test.`status` = 1 and tbl_eval_form_test.`id` = '".$id."'";
 
 	public function updateFormDetails($details)
 	{ 
-		$qry = "UPDATE tbl_eval_form_test SET product='".$details[2]."', product_code = '".$details[3]."', test_request_no = '".$details[4]."', sample_code = '".$details[5]."' WHERE id = '".$details[0]."' AND STATUS = 1";
+		$qry = "UPDATE tbl_eval_form_test SET product='".$details[2]."', test_request_no = '".$details[3]."', sample_code = '".$details[4]."' WHERE id = '".$details[0]."' AND STATUS = 1";
 		return $this->db->query($qry);
 	}
 

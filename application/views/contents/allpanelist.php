@@ -207,6 +207,16 @@
                                   
                                 </select>
                               </div>
+
+                              <div class="form-group">
+                                <label>Username</label>
+                                <input class="form-control" name="<?php echo($key->user_id.'un'); ?>" placeholder="Username" value="<?php echo $key->username; ?>" type="text">
+                              </div>
+
+                              <div class="form-group">
+                                <label>Section/Unit</label>
+                                <input class="form-control" name="<?php echo($key->user_id.'pw'); ?>" placeholder="Password" value="<?php echo $key->password; ?>" type="text">
+                              </div>
                             </form> 
                         </div>
                         
@@ -352,6 +362,16 @@
                                   
                                 </select>
                               </div>
+
+                              <div class="form-group">
+                                <label>Username</label>
+                                <input class="form-control" name="<?php echo($key->user_id.'un'); ?>" placeholder="Username" value="<?php echo $key->username; ?>" type="text">
+                              </div>
+
+                              <div class="form-group">
+                                <label>Section/Unit</label>
+                                <input class="form-control" name="<?php echo($key->user_id.'pw'); ?>" placeholder="Password" value="<?php echo $key->password; ?>" type="text">
+                              </div>
                             </form> 
                         </div>
                         
@@ -480,8 +500,10 @@
           var unit = $("input[name="+splitString+"unit]").val();
           var gender = $("#"+splitString+"gender").val();
           var accesstype = $("#"+splitString+"accesstype").val();
+          var un = $("input[name="+splitString+"un]").val();
+          var pw = $("input[name="+splitString+"pw]").val();
                                       
-          var formdata = new Array(splitString, fname, mname, lname, uname, contactno, address, unit, gender, accesstype);
+          var formdata = new Array(splitString, fname, mname, lname, uname, contactno, address, unit, gender, accesstype, un, pw);
           console.log(formdata);
 
           $.ajax({

@@ -72,6 +72,29 @@ class Shlform extends Main {
 		}
 	}
 
+	public function getOneFormPanel(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==1)){
+			$id = $this->input->post('id');
+			$data['oneForm'] = $this->Shlform_model->getOneForm($id);
+			$this->db->reconnect();
+			
+			if ($data['oneForm'][0]->form_type_id == 1 ) {
+				$data['oneFormSamples'] = $this->Shlform_model->getOneFormSamples($data['oneForm'][0]->id,1);
+				$this->db->reconnect();
+				$data['formAttr'] = $this->Shlform_model->getFormAttr($data['oneForm'][0]->id);
+				$this->load->view('contents/onepdtform',$data);
+			} else if ($data['oneForm'][0]->form_type_id == 2 ) {
+				//$data['oneFormSamples'] = $this->Shlform_model->getOneFormSamples($data['oneForm'][0]->id,2);
+				$this->db->reconnect();
+				$data['triadcodes'] = $this->Shlform_model->getTriadCodes($data['oneForm'][0]->id);
+				$this->load->view('contents/onettform',$data);
+			} else {
+
+			}
+			
+		}
+	}
+
 	public function updateTriadCodes(){
 		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
 			$data = $this->input->post('data');
