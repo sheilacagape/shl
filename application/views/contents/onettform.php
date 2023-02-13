@@ -54,16 +54,49 @@
  <div class="row col-md-12">
  	
  	<div class="col-md-12 sidetripDetails"> 
- 		<h5>Date of Evaluation: ________________________</h5>
+ 		<div class="col-md-6">
+
+ 		<h5 id="<?php echo('evaldate'.$oneForm[0]->id); ?>">Date of Evaluation: <?php echo $oneForm[0]->date_evaluation ?>
+ 			<span data-toggle="tooltip" data-placement="top" title="Edit Date of Evaluation" class="glyphicon glyphicon-pencil color editevaldate" aria-hidden="true" id="<?php echo $oneForm[0]->id; ?>" style="cursor: pointer; "></span> &nbsp;
+		</h5>
+
+        <form method="POST" style="display: none;" class="editeval" id="<?php echo "editdateeval".$oneForm[0]->id; ?>">
+          <br><label>Date of Evaluation</label>
+          <div class="input-group">
+          	
+						<input type="date" class="form-control" name="evaldate" placeholder="Evaluation Date" value="<?php echo date('d/m/Y',strtotime($oneForm[0]->date_evaluation)) ?>  ?>">
+						<div class="input-group-btn">
+						<button type="button" class="btn btn-default cancelevaldate" id="<?php echo $oneForm[0]->id; ?>"><span class="glyphicon glyphicon-remove-circle color" aria-hidden="true" style="cursor: pointer; "></span></button>
+						<button type="button" class="btn btn-primary saveevaldate" id="<?php echo $oneForm[0]->id; ?>"><span class="glyphicon glyphicon-ok-circle color" aria-hidden="true" style="cursor: pointer; "></span></button>
+						</div>
+					</div>
+        </form>	
  		<br>
+
+ 		</div>
+ 		
+ 		
  	</div>
  	
  	<div class="col-md-12 sidetripDetails"> 
  		<div class="row col-md-12">
  			<div class="col-md-6 well">
  				<div class=" col-md-6">
- 					<h5>Sample A: ________________________</h5>
- 					<h6>_____________________________</h6>
+ 					<h5 id="<?php echo('editsamplea'.$oneForm[0]->id); ?>">Sample A: <?php echo $oneForm[0]->tt_sample_one ?>
+			 			<span data-toggle="tooltip" data-placement="top" title="Edit Sample A" class="glyphicon glyphicon-pencil color editsamplea" aria-hidden="true" id="<?php echo $oneForm[0]->id; ?>" style="cursor: pointer; "></span> &nbsp;
+					</h5>
+
+			        <form method="POST" style="display: none;" class="editasample" id="<?php echo "editasample".$oneForm[0]->id; ?>">
+			          <br><label>Sample A:</label>
+			          <div class="input-group">
+			          	
+									<input type="text" class="form-control" name="samplea" placeholder="Sample A" value="<?php echo $oneForm[0]->tt_sample_one ?>">
+									<div class="input-group-btn">
+									<button type="button" class="btn btn-default cancelasample" id="<?php echo $oneForm[0]->id; ?>"><span class="glyphicon glyphicon-remove-circle color" aria-hidden="true" style="cursor: pointer; "></span></button>
+									<button type="button" class="btn btn-primary saveasample" id="<?php echo $oneForm[0]->id; ?>"><span class="glyphicon glyphicon-ok-circle color" aria-hidden="true" style="cursor: pointer; "></span></button>
+									</div>
+					</div>
+				</form>
 	 				<table class="table table-bordered">
 			 			<thead>
 			 				<th>Codes</th>
@@ -100,9 +133,22 @@
 			 		</table>
 				 </div>
 				 <div class=" col-md-6">
-				 	<h5>Sample B: ________________________</h5>
- 					<h6>_____________________________</h6>
-	 				<table class="table table-bordered">
+				 	<h5 id="<?php echo('editsampleb'.$oneForm[0]->id); ?>">Sample B: <?php echo $oneForm[0]->tt_sample_two ?>
+			 			<span data-toggle="tooltip" data-placement="top" title="Edit Sample B" class="glyphicon glyphicon-pencil color editsampleb" aria-hidden="true" id="<?php echo $oneForm[0]->id; ?>" style="cursor: pointer; "></span> &nbsp;
+					</h5>
+
+			        <form method="POST" style="display: none;" class="editbsample" id="<?php echo "editbsample".$oneForm[0]->id; ?>">
+			          <br><label>Sample B:</label>
+			          <div class="input-group">
+			          	
+									<input type="text" class="form-control" name="sampleb" placeholder="Sample B" value="<?php echo $oneForm[0]->tt_sample_two ?>">
+									<div class="input-group-btn">
+									<button type="button" class="btn btn-default cancelbsample" id="<?php echo $oneForm[0]->id; ?>"><span class="glyphicon glyphicon-remove-circle color" aria-hidden="true" style="cursor: pointer; "></span></button>
+									<button type="button" class="btn btn-primary savebsample" id="<?php echo $oneForm[0]->id; ?>"><span class="glyphicon glyphicon-ok-circle color" aria-hidden="true" style="cursor: pointer; "></span></button>
+									</div>
+					</div>
+				</form>
+					<table class="table table-bordered">
 			 			<thead>
 			 				<th>Codes</th>
 			 				<th>Triad #</th>
@@ -271,8 +317,11 @@
  			</div>
 			 
  		</div>
-
- 		<h5>* middle sample</h5>
+ 		<table>
+ 			<tr>
+ 				<td>* middle sample</td>
+ 			</tr>
+ 		</table>
  		<br>
 
  		<h5 >Prepared by: ________________</h5>
@@ -292,7 +341,198 @@
  <div class="alert" style="text-align: center; color: white; position:fixed;top:50%;left:50%;width:500px;height:50px;margin-left:-250px;margin-top:-25px;opacity: 0.7; background-color: gray;display: none;"></div>
 
  <script type="text/javascript">
+ 	$('.editevaldate').on('click',function(){
+    var id = $(this).attr('id');
 
+    $('#editdateeval'+id).show();
+    $('#evaldate'+id).hide();
+  });
+
+  $('.cancelevaldate').on('click',function(){
+    var id = $(this).attr('id');
+
+    $('#editdateeval'+id).hide();
+    $('#evaldate'+id).show();
+  });
+
+  $('.saveevaldate').on('click',function(){
+    var id = $(this).attr('id');
+
+    $('#editdateeval'+id).hide();
+    $('#evaldate'+id).show();
+
+    var evaldate = $("input[name=evaldate").val();
+    var evalid = $("input[name=evalid]").val()
+    var details = new Array(evalid, evaldate);
+      
+    $.ajax({
+			url: "http://"+window.location.host+"/shl/shlform/updateEvalDate",
+			type: "POST",
+			data: {"data":details},
+			success: function(data){
+
+				$("#reloadDiv").load("http://"+window.location.host+"/shl/shlform/getOneForm",{id:data});
+				
+				var fade_in = function() {
+				  // $(".alert").fadeOut().empty();
+				  $('.alert').text( "Successfully updated evaluation date." );
+				  $(".alert").show();
+				  $('.modal-backdrop').remove(); // removes the grey overlay.
+				}
+
+				var fade_out = function() {
+				  $(".alert").fadeOut().empty();
+				  // $(".alert").show();
+				}
+				setTimeout(fade_in,500);
+				setTimeout(fade_out, 3000);
+			},
+			error: function(){
+				
+				var fade_in = function() {
+				  // $(".alert").fadeOut().empty();
+				  $('.alert').text( "Unable to update evaluation date." );
+				  $(".alert").show();
+				}
+
+				var fade_out = function() {
+				  $(".alert").fadeOut().empty();
+				  // $(".alert").show();
+				}
+				setTimeout(fade_in,500);
+				setTimeout(fade_out, 3000);
+			}
+    });
+    });
+
+  $('.editsamplea').on('click',function(){
+    var id = $(this).attr('id');
+
+    $('#editasample'+id).show();
+    $('#editsamplea'+id).hide();
+  });
+
+  $('.cancelasample').on('click',function(){
+    var id = $(this).attr('id');
+
+    $('#editasample'+id).hide();
+    $('#editsamplea'+id).show();
+  });
+
+  $('.saveasample').on('click',function(){
+    var id = $(this).attr('id');
+
+    $('#editasample'+id).hide();
+    $('#editsamplea'+id).show();
+
+    var samplea = $("input[name=samplea").val();
+    var evalid = $("input[name=evalid]").val()
+    var details = new Array(evalid, samplea);
+      
+    $.ajax({
+			url: "http://"+window.location.host+"/shl/shlform/updateSampleA",
+			type: "POST",
+			data: {"data":details},
+			success: function(data){
+
+				$("#reloadDiv").load("http://"+window.location.host+"/shl/shlform/getOneForm",{id:data});
+				
+				var fade_in = function() {
+				  // $(".alert").fadeOut().empty();
+				  $('.alert').text( "Successfully updated Sample A." );
+				  $(".alert").show();
+				  $('.modal-backdrop').remove(); // removes the grey overlay.
+				}
+
+				var fade_out = function() {
+				  $(".alert").fadeOut().empty();
+				  // $(".alert").show();
+				}
+				setTimeout(fade_in,500);
+				setTimeout(fade_out, 3000);
+			},
+			error: function(){
+				
+				var fade_in = function() {
+				  // $(".alert").fadeOut().empty();
+				  $('.alert').text( "Unable to update Sample A." );
+				  $(".alert").show();
+				}
+
+				var fade_out = function() {
+				  $(".alert").fadeOut().empty();
+				  // $(".alert").show();
+				}
+				setTimeout(fade_in,500);
+				setTimeout(fade_out, 3000);
+			}
+    });
+    });
+
+
+  $('.editsampleb').on('click',function(){
+    var id = $(this).attr('id');
+
+    $('#editbsample'+id).show();
+    $('#editsampleb'+id).hide();
+  });
+
+  $('.cancelbsample').on('click',function(){
+    var id = $(this).attr('id');
+
+    $('#editbsample'+id).hide();
+    $('#editsampleb'+id).show();
+  });
+
+  $('.savebsample').on('click',function(){
+    var id = $(this).attr('id');
+
+    $('#edibsample'+id).hide();
+    $('#editsampleb'+id).show();
+
+    var sampleb = $("input[name=sampleb").val();
+    var evalid = $("input[name=evalid]").val()
+    var details = new Array(evalid, sampleb);
+      
+    $.ajax({
+			url: "http://"+window.location.host+"/shl/shlform/updateSampleB",
+			type: "POST",
+			data: {"data":details},
+			success: function(data){
+
+				$("#reloadDiv").load("http://"+window.location.host+"/shl/shlform/getOneForm",{id:data});
+				
+				var fade_in = function() {
+				  // $(".alert").fadeOut().empty();
+				  $('.alert').text( "Successfully updated Sample B." );
+				  $(".alert").show();
+				  $('.modal-backdrop').remove(); // removes the grey overlay.
+				}
+
+				var fade_out = function() {
+				  $(".alert").fadeOut().empty();
+				  // $(".alert").show();
+				}
+				setTimeout(fade_in,500);
+				setTimeout(fade_out, 3000);
+			},
+			error: function(){
+				
+				var fade_in = function() {
+				  // $(".alert").fadeOut().empty();
+				  $('.alert').text( "Unable to update Sample B." );
+				  $(".alert").show();
+				}
+
+				var fade_out = function() {
+				  $(".alert").fadeOut().empty();
+				  // $(".alert").show();
+				}
+				setTimeout(fade_in,500);
+				setTimeout(fade_out, 3000);
+			}
+    });
+    });
 
 	$('#editcodesbtn').on('click',function(){
  		$('#editcodes').show();
@@ -309,11 +549,20 @@
  		$('#editcodes').hide();
  		var evalid = $("input[name=evalid]").val()
  		var triadcodes = new Array();
+
+
+
  		var triadcodesid = new Array();
  		for (var i = 1; i < 46; i++) {
  			triadcodes.push($("input[name="+i+"]").val());
  			triadcodesid.push($("input[name="+i+"]").attr('id'));
  		}
+ 		var test = new Set(triadcodes).size !== triadcodes.length;
+ 		if(test==true){
+ 			alert("There's a duplicate in the triad codes.");
+ 			return false;
+ 		} 
+
  		var data = new Array();
  		data.push(triadcodes);
  		data.push(triadcodesid);

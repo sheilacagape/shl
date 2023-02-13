@@ -113,6 +113,36 @@ class Shlform extends Main {
 	}
 
 	
+
+	public function updateEvalDate(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
+			$data = $this->input->post('data');
+			$this->Shlform_model->updateEvalDate($data);
+
+			echo $data[0];
+		}
+	}
+
+	
+	public function updateSampleA(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
+			$data = $this->input->post('data');
+			$this->Shlform_model->updateSampleA($data);
+
+			echo $data[0];
+		}
+	}
+
+	public function updateSampleB(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
+			$data = $this->input->post('data');
+			$this->Shlform_model->updateSampleB($data);
+
+			echo $data[0];
+		}
+	}
+
+	
 	public function openForm(){
 		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
 			$id = $this->input->post('data');

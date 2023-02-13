@@ -76,6 +76,22 @@ class Shlform_model extends CI_Model {
 		$this->db->query($qry);
 		return $this->db->insert_id();
 	}
+	
+
+	public function updateEvalDate($data){
+		$qry = "UPDATE tbl_eval_form_test SET date_evaluation = '".$data[1]."' WHERE id = '".$data[0]."'";	
+		return $this->db->query($qry);
+	}
+	
+	public function updateSampleA($data){
+		$qry = "UPDATE tbl_eval_form_test SET tt_sample_one = '".$data[1]."' WHERE id = '".$data[0]."'";	
+		return $this->db->query($qry);
+	}
+
+	public function updateSampleB($data){
+		$qry = "UPDATE tbl_eval_form_test SET tt_sample_two = '".$data[1]."' WHERE id = '".$data[0]."'";	
+		return $this->db->query($qry);
+	}
 
 	public function updateInstanceofTT($instance,$ttid){
 		$qry = "INSERT INTO tbl_triangle_test_sample (tt_id, instance) VALUES ('".$ttid."','".$instance."')";				

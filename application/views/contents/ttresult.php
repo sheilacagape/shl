@@ -22,7 +22,7 @@
  		<br>
  	</div>
  	<?php var_dump($ttanswers) ?>
- 	<br>
+ 	<br>	
  	<?php var_dump($ttanswers) ?>
  	
  	<div class="col-md-12 sidetripDetails"> 
