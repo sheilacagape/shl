@@ -21,9 +21,7 @@
 		<h5>Date of Computation: ________________________</h5>
  		<br>
  	</div>
- 	<?php var_dump($ttanswers) ?>
- 	<br>	
- 	<?php var_dump($ttanswers) ?>
+ 	
  	
  	<div class="col-md-12 sidetripDetails"> 
  		<div class="row col-md-12">
@@ -61,10 +59,9 @@
 					 					<td>
 					 						<?php
 					 							if (isset($ttanswers[$i])) {
-					 								if ($ttanswers[$i]->tt_sample_odd_id == $triad[(($i+1)*3)-1]->triad_code_id) {
-					 									echo $ttanswers[$i]->tt_sample_odd_id;
-					 									echo "<br>";
-					 									echo $triad[(($i+1)*3)-1]->triad_code_id;
+					 								if ($ttanswers[$i]->tt_sample_odd_id == $triad[$i]->triad_code_id) {
+					 									
+					 									echo "/";
 					 								}
 					 							} else {
 					 								echo "<em>N/A</em>";
@@ -74,10 +71,8 @@
 					 					<td>
 					 						<?php
 					 							if (isset($ttanswers[$i])) {
-					 								if ($ttanswers[$i]->tt_sample_odd_id != $triad[(($i+1)*3)-1]->triad_code_id) {
-					 									echo $ttanswers[$i]->tt_sample_odd_id;
-					 									echo "<br>";
-					 									echo $triad[(($i+1)*3)-1]->triad_code_id;
+					 								if ($ttanswers[$i]->tt_sample_odd_id != $triad[$i]->triad_code_id) {
+					 									echo "/";
 					 								}
 					 							} else {
 					 								echo "<em>N/A</em>";
@@ -91,8 +86,8 @@
 							<tr>
 			 					<td></td>
 			 					<td>Total</td>
-			 					<td></td>
-			 					<td></td>
+			 					<td><?php echo $check ?></td>
+			 					<td><?php echo $wrong ?></td>
 			 				</tr>
 
 			 				

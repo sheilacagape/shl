@@ -287,6 +287,18 @@ class Shlform extends Main {
 			} else if ($ftid == 2 ) {
 				$data['ttanswers'] = $this->Shlform_model->getOneEvalAnswers($id,$ftid);
 				$data['triad'] = $this->Shlform_model->getTriads($id);
+				$data['check'] = 0;
+				$data['wrong'] = 0;
+				for ($i=0; $i < count($data['ttanswers']); $i++) { 
+					if ($data['ttanswers'][$i]->tt_sample_odd_id == $data['triad'][$i]->triad_code_id) {
+						
+						$data['check']++;
+					}
+
+					if ($data['ttanswers'][$i]->tt_sample_odd_id != $data['triad'][$i]->triad_code_id) {
+						$data['wrong']++;
+					}
+				}
 				$this->load->view('contents/ttresult',$data);
 			} else {
 
