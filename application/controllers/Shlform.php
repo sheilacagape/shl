@@ -282,7 +282,19 @@ class Shlform extends Main {
 			$data['id'] = $id;
 			$data['ftid'] = $ftid;
 			if ($ftid == 1 ) {
+				$data['pdtsamples'] = $this->Shlform_model->getPDTSample($id);
+				$this->db->reconnect();
+				$data['pdtattr'] = $this->Shlform_model->getPDTAttr($id);
+				$this->db->reconnect();
 				$data['pdtanswers'] = $this->Shlform_model->getOneEvalAnswers($id,$ftid);
+				$this->db->reconnect();
+				$data['perrecord'] = array();
+				for ($i=0; $i < count($data['pdtanswers']); $i++) { 
+					$rec = $this->Shlform_model->getOnePDTAnswer($id,$data['pdtanswers'][$i]->user_id);
+					$this->db->reconnect();
+					array_push($data['perrecord'],$rec);
+				}
+
 				$this->load->view('contents/pdtresult',$data);
 			} else if ($ftid == 2 ) {
 				$data['ttanswers'] = $this->Shlform_model->getOneEvalAnswers($id,$ftid);

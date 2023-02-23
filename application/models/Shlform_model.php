@@ -281,4 +281,25 @@ ORDER BY tt_sample_odd_id   ";
 		return $this->db->query($qry)->result();
 
 	}
+
+	public function getOnePDTAnswer($id,$user_id){
+		$qry = "SELECT * FROM tbl_users
+LEFT JOIN tbl_paired_difference_answers ON tbl_paired_difference_answers.`panelist_id` = tbl_users.`user_id`
+ WHERE pdt_form_id = '".$id."' and panelist_id = '".$user_id."' ";
+
+		 return $this->db->query($qry)->result();
+
+	}
+
+	public function getPDTSample($id){
+		$qry = "SELECT * FROM tbl_paired_difference_test_sample WHERE pdt_id ='".$id."'";
+
+		 return $this->db->query($qry)->result();		
+	}
+
+	public function getPDTAttr($id){
+		$qry = "SELECT * FROM tbl_paired_diff_attr WHERE pdt_id  = '".$id."'";
+
+		 return $this->db->query($qry)->result();
+	}
 }

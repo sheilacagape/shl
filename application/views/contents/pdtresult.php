@@ -12,7 +12,7 @@
  		
  </div>
 
-
+<?php var_dump($perrecord) ?>
 
  <div class="row col-md-12">
 
@@ -20,7 +20,7 @@
       <table class="table">
         <tr>
           <td>Request Number:</td>
-          <td>________________</td>
+          <td><u><?php echo  $pdtanswers[0]->test_request_no?></u></td>
           <td>Analyzed by:</td>
           <td>________________</td>
           <td>Signature:</td>
@@ -28,7 +28,7 @@
         </tr>
         <tr>
           <td>Laboratory Code Number:</td>
-          <td>________________</td>
+          <td><u><?php echo  $pdtanswers[0]->sample_code?></u></td>
           <td>Checked by:</td>
           <td>________________</td>
           <td>Signature:</td>
@@ -36,7 +36,7 @@
         </tr>
         <tr>
           <td>Sample Description Code:</td>
-          <td>________________</td>
+          <td><u><?php echo  $pdtanswers[0]->sample_code?></u></td>
           <td>Date of Analysis:</td>
           <td>________________</td>
           <td></td>
@@ -57,26 +57,26 @@
 			 				<tr>
 			 				<th rowspan="3">Panelist</th>
 			 				<th rowspan="3">Random Reference Number</th>
-			 				<th colspan="5">Lab Code:</th>
+			 				<th colspan="5">Lab Code: <?php echo  $pdtsamples[0]->sample_code?></th>
 			 				<th rowspan="3">Panelist</th>
 			 				<th rowspan="3">Random Reference Number</th>
-			 				<th colspan="5">Lab Code:</th>
+			 				<th colspan="5">Lab Code: <?php echo  $pdtsamples[1]->sample_code?></th>
 			 				</tr>
 			 				<tr>
 			 				<th colspan="5">Attributes</th>
 			 				<th colspan="5">Attributes</th>
 			 				</tr>
 			 				<tr>
-			 				<th>Attribute 1</th>
-			 				<th>Attribute 2</th>
-			 				<th>Attribute 3</th>
-			 				<th>Attribute 4</th>
-			 				<th>Attribute 5</th>
-			 				<th>Attribute 1</th>
-			 				<th>Attribute 2</th>
-			 				<th>Attribute 3</th>
-			 				<th>Attribute 4</th>
-			 				<th>Attribute 5</th>
+			 				<th><?php echo  $pdtattr[0]->attr_desc?></th>
+			 				<th><?php echo  $pdtattr[1]->attr_desc?></th>
+			 				<th><?php echo  $pdtattr[2]->attr_desc?></th>
+			 				<th><?php echo  $pdtattr[3]->attr_desc?></th>
+			 				<th><?php echo  $pdtattr[4]->attr_desc?></th>
+			 				<th><?php echo  $pdtattr[0]->attr_desc?></th>
+			 				<th><?php echo  $pdtattr[1]->attr_desc?></th>
+			 				<th><?php echo  $pdtattr[2]->attr_desc?></th>
+			 				<th><?php echo  $pdtattr[3]->attr_desc?></th>
+			 				<th><?php echo  $pdtattr[4]->attr_desc?></th>
 			 				</tr>
 			 			</thead>
 			 			<tbody>
@@ -150,6 +150,11 @@
 	
  </div>
 
+<div class="col-md-12 "> 
+<br>
+<button type="button" class="btn btn-warning btn-block printTT" >Print</button>
+<br>
+</div>
 
  <div class="alert" style="text-align: center; color: white; position:fixed;top:50%;left:50%;width:500px;height:50px;margin-left:-250px;margin-top:-25px;opacity: 0.7; background-color: gray;display: none;"></div>
 

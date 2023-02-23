@@ -161,6 +161,11 @@
 	<h5 style="text-align: right;">STM-023-F3<br>Revision 0<br>Effectivity Date: 16 March 2020</h5>	
 
  </div>
+<div class="col-md-12 "> 
+<br>
+<button type="button" class="btn btn-warning btn-block printTT" >Print</button>
+<br>
+</div>
 
 
  <div class="alert" style="text-align: center; color: white; position:fixed;top:50%;left:50%;width:500px;height:50px;margin-left:-250px;margin-top:-25px;opacity: 0.7; background-color: gray;display: none;"></div>
