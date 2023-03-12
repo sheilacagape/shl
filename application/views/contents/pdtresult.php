@@ -11,10 +11,12 @@
  	<hr>
  		
  </div>
-
-<?php var_dump($perrecord) ?>
+ 
 
  <div class="row col-md-12">
+<?php 
+//echo '<pre>' . var_export($perrecord, true) . '</pre>';
+?>
 
  	<div>
       <table class="table">
@@ -63,8 +65,8 @@
 			 				<th colspan="5">Lab Code: <?php echo  $pdtsamples[1]->sample_code?></th>
 			 				</tr>
 			 				<tr>
-			 				<th colspan="5">Attributes</th>
-			 				<th colspan="5">Attributes</th>
+			 				<th style="text-align: center;" colspan="5">Attributes</th>
+			 				<th style="text-align: center;" colspan="5">Attributes</th>
 			 				</tr>
 			 				<tr>
 			 				<th><?php echo  $pdtattr[0]->attr_desc?></th>
@@ -86,18 +88,100 @@
 			 						<tr>
 					 					<td><?php echo $i+1; ?></td>
 					 					<td>1</td>
-					 					<td></td>
-					 					<td></td>
-					 					<td></td>
-					 					<td></td>
-					 					<td></td>
+					 					<td>
+					 						<?php if (isset($perrecord[$i][0])) {
+					 						if ($perrecord[$i][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
+						 							echo "/";
+						 						}
+						 					} else{
+						 						echo "";
+						 					} ?>
+						 						
+					 					</td>
+					 					<td>
+					 						<?php if (isset($perrecord[$i][1])) {
+					 						if ($perrecord[$i][1]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
+						 							echo "/";
+						 						}
+						 					} else{
+						 						echo "";
+						 					} ?>
+					 					</td>
+					 					<td>
+					 						<?php if (isset($perrecord[$i][2])) {
+					 						if ($perrecord[$i][2]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
+						 							echo "/";
+						 						}
+						 					} else{
+						 						echo "";
+						 					} ?>
+					 					</td>
+					 					<td>
+					 						<?php if (isset($perrecord[$i][3])) {
+					 						if ($perrecord[$i][3]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
+						 							echo "/";
+						 						}
+						 					} else{
+						 						echo "";
+						 					} ?>
+					 					</td>
+					 					<td>
+					 						<?php if (isset($perrecord[$i][4])) {
+					 						if ($perrecord[$i][4]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
+						 							echo "/";
+						 						}
+						 					} else{
+						 						echo "";
+						 					} ?>
+					 					</td>
 					 					<td><?php echo $i+1; ?></td>
 					 					<td>2</td>
-					 					<td></td>
-					 					<td></td>
-					 					<td></td>
-					 					<td></td>
-					 					<td></td>
+					 					<td>
+					 						<?php if (isset($perrecord[$i][0])) {
+					 						if ($perrecord[$i][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
+						 							echo "/";
+						 						}
+						 					} else{
+						 						echo "";
+						 					} ?>
+						 						
+					 					</td>
+					 					<td>
+					 						<?php if (isset($perrecord[$i][1])) {
+					 						if ($perrecord[$i][1]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
+						 							echo "/";
+						 						}
+						 					} else{
+						 						echo "";
+						 					} ?>
+					 					</td>
+					 					<td>
+					 						<?php if (isset($perrecord[$i][2])) {
+					 						if ($perrecord[$i][2]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
+						 							echo "/";
+						 						}
+						 					} else{
+						 						echo "";
+						 					} ?>
+					 					</td>
+					 					<td>
+					 						<?php if (isset($perrecord[$i][3])) {
+					 						if ($perrecord[$i][3]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
+						 							echo "/";
+						 						}
+						 					} else{
+						 						echo "";
+						 					} ?>
+					 					</td>
+					 					<td>
+					 						<?php if (isset($perrecord[$i][4])) {
+					 						if ($perrecord[$i][4]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
+						 							echo "/";
+						 						}
+						 					} else{
+						 						echo "";
+						 					} ?>
+					 					</td>
 					 				</tr>
 			 						<?php
 			 					}
@@ -112,7 +196,7 @@
  		
  		
  	</div>
- 
+
  	<br>
 
 	<h5 >Note: If 2/3 of the total number of panelist preferred the control sample then it can be said that there is a significant difference between the samples evaluated</h5>
@@ -122,8 +206,24 @@
       <table class="table">
         <tr>
           <td colspan="2">Check the box for the decision:</td>
-          <td><input type="checkbox"> Significant difference</td>
-          <td><input type="checkbox"> No significant difference</td>
+          <?php 
+          	if ($left/($right+$left) > .66) {
+          		?>
+          		<td><input type="checkbox" checked> Significant difference</td>
+          		<td><input type="checkbox"> No significant difference</td>
+          	<?php } elseif ($right/($left+$right) > .66) {
+          		?>
+          		<td><input type="checkbox"> Significant difference</td>
+          		<td><input type="checkbox" checked> No significant difference</td>
+          	<?php } else {
+          		?>
+          		<td><input type="checkbox"> Significant difference</td>
+          		<td><input type="checkbox" > No significant difference</td>
+          	<?php
+
+          	}
+           ?>
+          
           
           
         </tr>
@@ -152,7 +252,8 @@
 
 <div class="col-md-12 "> 
 <br>
-<button type="button" class="btn btn-warning btn-block printTT" >Print</button>
+<a target="_blank" href="<?= base_url('shlform/printsummary?t_id='.$id.'&ftid='.$ftid) ;?>" ><button type="button" class="btn btn-warning btn-block printPDT" >Print</button> </a>
+
 <br>
 </div>
 

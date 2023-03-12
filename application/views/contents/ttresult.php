@@ -163,7 +163,8 @@
  </div>
 <div class="col-md-12 "> 
 <br>
-<button type="button" class="btn btn-warning btn-block printTT" >Print</button>
+<a target="_blank" href="<?= base_url('shlform/printsummary?t_id='.$id.'&ftid='.$ftid) ;?>" ><button type="button" class="btn btn-warning btn-block printTT" >Print</button> </a>
+
 <br>
 </div>
 

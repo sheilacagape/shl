@@ -282,6 +282,8 @@ class Shlform extends Main {
 			$data['id'] = $id;
 			$data['ftid'] = $ftid;
 			if ($ftid == 1 ) {
+				$data['left'] = 0;
+				$data['right'] = 0;
 				$data['pdtsamples'] = $this->Shlform_model->getPDTSample($id);
 				$this->db->reconnect();
 				$data['pdtattr'] = $this->Shlform_model->getPDTAttr($id);
@@ -293,6 +295,60 @@ class Shlform extends Main {
 					$rec = $this->Shlform_model->getOnePDTAnswer($id,$data['pdtanswers'][$i]->user_id);
 					$this->db->reconnect();
 					array_push($data['perrecord'],$rec);
+				}
+
+				for ($i=0; $i < count($data['perrecord']); $i++) { 
+					if (isset($data['perrecord'][$i][0])){
+						if ($data['perrecord'][$i][0]->pdt_sample_odd_id==$data['pdtsamples'][0]->pdt_sample_id) {
+						 	$data['left']++;
+						} 
+					}
+					if (isset($data['perrecord'][$i][1])){
+						if ($data['perrecord'][$i][1]->pdt_sample_odd_id==$data['pdtsamples'][0]->pdt_sample_id) {
+						 	$data['left']++;
+						} 
+					}
+					if (isset($data['perrecord'][$i][2])){
+						if ($data['perrecord'][$i][2]->pdt_sample_odd_id==$data['pdtsamples'][0]->pdt_sample_id) {
+						 	$data['left']++;
+						} 
+					}
+					if (isset($data['perrecord'][$i][3])){
+						if ($data['perrecord'][$i][3]->pdt_sample_odd_id==$data['pdtsamples'][0]->pdt_sample_id) {
+						 	$data['left']++;
+						} 
+					}
+					if (isset($data['perrecord'][$i][4])){
+						if ($data['perrecord'][$i][4]->pdt_sample_odd_id==$data['pdtsamples'][0]->pdt_sample_id) {
+						 	$data['left']++;
+						} 
+					}	
+
+					if (isset($data['perrecord'][$i][0])){
+						if ($data['perrecord'][$i][0]->pdt_sample_odd_id==$data['pdtsamples'][1]->pdt_sample_id) {
+						 	$data['right']++;
+						} 
+					}
+					if (isset($data['perrecord'][$i][1])){
+						if ($data['perrecord'][$i][1]->pdt_sample_odd_id==$data['pdtsamples'][1]->pdt_sample_id) {
+						 	$data['right']++;
+						} 
+					}
+					if (isset($data['perrecord'][$i][2])){
+						if ($data['perrecord'][$i][2]->pdt_sample_odd_id==$data['pdtsamples'][1]->pdt_sample_id) {
+						 	$data['right']++;
+						} 
+					}
+					if (isset($data['perrecord'][$i][3])){
+						if ($data['perrecord'][$i][3]->pdt_sample_odd_id==$data['pdtsamples'][1]->pdt_sample_id) {
+						 	$data['right']++;
+						} 
+					}
+					if (isset($data['perrecord'][$i][4])){
+						if ($data['perrecord'][$i][4]->pdt_sample_odd_id==$data['pdtsamples'][1]->pdt_sample_id) {
+						 	$data['right']++;
+						} 
+					}	
 				}
 
 				$this->load->view('contents/pdtresult',$data);
@@ -317,6 +373,109 @@ class Shlform extends Main {
 			}
 			
 			
+		}
+	}
+
+	public function printsummary(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
+			$id = $this->input->get('t_id');
+			$ftid = $this->input->get('ftid');
+			$data['id'] = $id;
+			$data['ftid'] = $ftid;
+			
+			if ($ftid == 1 ) {
+			    $data['left'] = 0;
+				$data['right'] = 0;
+				$data['pdtsamples'] = $this->Shlform_model->getPDTSample($id);
+				$this->db->reconnect();
+				$data['pdtattr'] = $this->Shlform_model->getPDTAttr($id);
+				$this->db->reconnect();
+				$data['pdtanswers'] = $this->Shlform_model->getOneEvalAnswers($id,$ftid);
+				$this->db->reconnect();
+				$data['perrecord'] = array();
+				for ($i=0; $i < count($data['pdtanswers']); $i++) { 
+					$rec = $this->Shlform_model->getOnePDTAnswer($id,$data['pdtanswers'][$i]->user_id);
+					$this->db->reconnect();
+					array_push($data['perrecord'],$rec);
+				}
+
+				for ($i=0; $i < count($data['perrecord']); $i++) { 
+					if (isset($data['perrecord'][$i][0])){
+						if ($data['perrecord'][$i][0]->pdt_sample_odd_id==$data['pdtsamples'][0]->pdt_sample_id) {
+						 	$data['left']++;
+						} 
+					}
+					if (isset($data['perrecord'][$i][1])){
+						if ($data['perrecord'][$i][1]->pdt_sample_odd_id==$data['pdtsamples'][0]->pdt_sample_id) {
+						 	$data['left']++;
+						} 
+					}
+					if (isset($data['perrecord'][$i][2])){
+						if ($data['perrecord'][$i][2]->pdt_sample_odd_id==$data['pdtsamples'][0]->pdt_sample_id) {
+						 	$data['left']++;
+						} 
+					}
+					if (isset($data['perrecord'][$i][3])){
+						if ($data['perrecord'][$i][3]->pdt_sample_odd_id==$data['pdtsamples'][0]->pdt_sample_id) {
+						 	$data['left']++;
+						} 
+					}
+					if (isset($data['perrecord'][$i][4])){
+						if ($data['perrecord'][$i][4]->pdt_sample_odd_id==$data['pdtsamples'][0]->pdt_sample_id) {
+						 	$data['left']++;
+						} 
+					}	
+
+					if (isset($data['perrecord'][$i][0])){
+						if ($data['perrecord'][$i][0]->pdt_sample_odd_id==$data['pdtsamples'][1]->pdt_sample_id) {
+						 	$data['right']++;
+						} 
+					}
+					if (isset($data['perrecord'][$i][1])){
+						if ($data['perrecord'][$i][1]->pdt_sample_odd_id==$data['pdtsamples'][1]->pdt_sample_id) {
+						 	$data['right']++;
+						} 
+					}
+					if (isset($data['perrecord'][$i][2])){
+						if ($data['perrecord'][$i][2]->pdt_sample_odd_id==$data['pdtsamples'][1]->pdt_sample_id) {
+						 	$data['right']++;
+						} 
+					}
+					if (isset($data['perrecord'][$i][3])){
+						if ($data['perrecord'][$i][3]->pdt_sample_odd_id==$data['pdtsamples'][1]->pdt_sample_id) {
+						 	$data['right']++;
+						} 
+					}
+					if (isset($data['perrecord'][$i][4])){
+						if ($data['perrecord'][$i][4]->pdt_sample_odd_id==$data['pdtsamples'][1]->pdt_sample_id) {
+						 	$data['right']++;
+						} 
+					}	
+				}
+			    
+			    $this->load->view('contents/pdtresultprint',$data);
+			    
+			   } else if ($ftid == 2 ) {
+			    $data['ttanswers'] = $this->Shlform_model->getOneEvalAnswers($id,$ftid);
+				$data['triad'] = $this->Shlform_model->getTriads($id);
+				$data['check'] = 0;
+				$data['wrong'] = 0;
+				for ($i=0; $i < count($data['ttanswers']); $i++) { 
+					if ($data['ttanswers'][$i]->tt_sample_odd_id == $data['triad'][$i]->triad_code_id) {
+						
+						$data['check']++;
+					}
+
+					if ($data['ttanswers'][$i]->tt_sample_odd_id != $data['triad'][$i]->triad_code_id) {
+						$data['wrong']++;
+					}
+				}
+
+			    $this->load->view('contents/ttresultprint',$data); 
+			    
+			   } else {
+			   		
+			   }
 		}
 	}
 	
