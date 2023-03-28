@@ -28,27 +28,27 @@ echo '<html>
 		  <h4 style="text-align: center;">Sensory Evaluation - Triangle Test Result Summary</h4>
 		  
 
- 		<p>Request No.: <u>'.$ttanswers[0]->test_request_no.'</u></p>
-		<p>Laboratory Code No.: <u>'.$ttanswers[0]->sample_code.'</u></p>
-		<p>Sample Description/Code: <u>'.$ttanswers[0]->product_code.'</u></p>
+ 		<p>Request Reference No.: <u>'.$ttanswers[0]->test_request_no.'</u></p>
+		<p>Sample Code: <u>'.$ttanswers[0]->sample_code.'</u></p>
+		<p>Sample Description: <u>'.$ttanswers[0]->product.'</u></p>
 		<p>Date of Computation: ________________________</p>
  		<br>
  	<div>
     	<table>
-	  <tr>
+	  <tr style="text-align: center; ">
 	    <td colspan="4">
 
 	      <table cellspacing="0" cellpadding="1" border="1" >
-	        <tr>
+	        <tr style="text-align: center; ">
 	          <td rowspan="2"></td>
-	          <td rowspan="2">Panelist No.</td>
-	          <td colspan="2">Responses</td>
+	          <td rowspan="2" style="text-align: center; ">Panelist No.</td>
+	          <td colspan="2" style="text-align: center; ">Responses</td>
 	        </tr>
-	        <tr>
-	          <td>Correct</td>
-	          <td>Incorrect</td>
+	        <tr style="text-align: center; ">
+	          <td style="text-align: center; ">Correct</td>
+	          <td style="text-align: center; ">Incorrect</td>
 	        </tr>';
-	        echo '<tr><td>1</td><td>';
+	        echo '<tr style="text-align: center; "><td>1</td><td>';
 		if (isset($ttanswers[0])) {
 			echo 1;
 		} else {
@@ -72,7 +72,7 @@ echo '<html>
 		}
 	      echo '</td></tr>';
 
-	      echo '<tr><td>2</td><td>';
+	      echo '<tr style="text-align: center; "><td>2</td><td>';
 		if (isset($ttanswers[1])) {
 			echo 2;
 		} else {
@@ -96,7 +96,7 @@ echo '<html>
 		}
 	      echo '</td></tr>';
 
-	      echo '<tr><td>3</td><td>';
+	      echo '<tr style="text-align: center; "><td>3</td><td>';
 		if (isset($ttanswers[2])) {
 			echo 3;
 		} else {
@@ -120,7 +120,7 @@ echo '<html>
 		}
 	      echo '</td></tr>';
 
-	      echo '<tr><td>4</td><td>';
+	      echo '<tr style="text-align: center; "><td>4</td><td>';
 		if (isset($ttanswers[3])) {
 			echo 4;
 		} else {
@@ -144,7 +144,7 @@ echo '<html>
 		}
 	      echo '</td></tr>';
 
-	      echo '<tr><td>5</td><td>';
+	      echo '<tr style="text-align: center; "><td>5</td><td>';
 		if (isset($ttanswers[4])) {
 			echo 5;
 		} else {
@@ -168,7 +168,7 @@ echo '<html>
 		}
 	      echo '</td></tr>';
 
-	      echo '<tr><td>6</td><td>';
+	      echo '<tr style="text-align: center; "><td>6</td><td>';
 		if (isset($ttanswers[5])) {
 			echo 6;
 		} else {
@@ -192,7 +192,7 @@ echo '<html>
 		}
 	      echo '</td></tr>';
 
-	      echo '<tr><td>7</td><td>';
+	      echo '<tr style="text-align: center; "><td>7</td><td>';
 		if (isset($ttanswers[6])) {
 			echo 7;
 		} else {
@@ -216,7 +216,7 @@ echo '<html>
 		}
 	      echo '</td></tr>';
 
-	      echo '<tr><td>8</td><td>';
+	      echo '<tr style="text-align: center; "><td>8</td><td>';
 		if (isset($ttanswers[7])) {
 			echo 8;
 		} else {
@@ -240,7 +240,7 @@ echo '<html>
 		}
 	      echo '</td></tr>';
 
-	      echo '<tr><td>9</td><td>';
+	      echo '<tr style="text-align: center; "><td>9</td><td>';
 		if (isset($ttanswers[8])) {
 			echo 9;
 		} else {
@@ -264,7 +264,7 @@ echo '<html>
 		}
 	      echo '</td></tr>';
 
-	      echo '<tr><td>10</td><td>';
+	      echo '<tr style="text-align: center; "><td>10</td><td>';
 		if (isset($ttanswers[9])) {
 			echo 10;
 		} else {
@@ -288,7 +288,7 @@ echo '<html>
 		}
 	      echo '</td></tr>';
 
-	      echo '<tr><td>11</td><td>';
+	      echo '<tr style="text-align: center; "><td>11</td><td>';
 		if (isset($ttanswers[10])) {
 			echo 11;
 		} else {
@@ -312,7 +312,7 @@ echo '<html>
 		}
 	      echo '</td></tr>';
 
-	      echo '<tr><td>12</td><td>';
+	      echo '<tr style="text-align: center; "><td>12</td><td>';
 		if (isset($ttanswers[11])) {
 			echo 12;
 		} else {
@@ -336,7 +336,7 @@ echo '<html>
 		}
 	      echo '</td></tr>';
 
-	      echo '<tr><td>13</td><td>';
+	      echo '<tr style="text-align: center; "><td>13</td><td>';
 		if (isset($ttanswers[12])) {
 			echo 13;
 		} else {
@@ -360,7 +360,7 @@ echo '<html>
 		}
 	      echo '</td></tr>';
 
-	      echo '<tr><td>14</td><td>';
+	      echo '<tr style="text-align: center; "><td>14</td><td>';
 		if (isset($ttanswers[13])) {
 			echo 14;
 		} else {
@@ -384,7 +384,7 @@ echo '<html>
 		}
 	      echo '</td></tr>';
 
-	      echo '<tr><td>15</td><td>';
+	      echo '<tr style="text-align: center; "><td>15</td><td>';
 		if (isset($ttanswers[14])) {
 			echo 15;
 		} else {
@@ -407,7 +407,7 @@ echo '<html>
 			echo "<em>N/A</em>";
 		}
 	      echo '</td></tr>';
-	      echo '<tr>
+	      echo '<tr style="text-align: center; ">
 			<td></td>
 			<td>Total</td>
 			<td>'.$check.'</td>
@@ -421,25 +421,25 @@ echo '<html>
 	      <h5>Table 1</h5>
  					
 		<table cellspacing="0" cellpadding="1" border="1">
-			<tr>
+			<tr style="text-align: center;">
 				<th>n</th>
 				<th>a = 0.05</th>
 			</tr>
-			<tr><td>6</td><td>5</td></tr>
-			<tr><td>7</td><td>5</td></tr>
-			<tr><td>8</td><td>6</td></tr>
-			<tr><td>9</td><td>6</td></tr>
-			<tr><td>10</td><td>7</td></tr>
-			<tr><td>11</td><td>7</td></tr>
-			<tr><td>12</td><td>8</td></tr>
-			<tr><td>13</td><td>8</td></tr>
-			<tr><td>14</td><td>9</td></tr>
-			<tr><td>15</td><td>9</td></tr>
-			<tr><td>16</td><td>9</td></tr>
-			<tr><td>17</td><td>10</td></tr>
-			<tr><td>18</td><td>10</td></tr>
-			<tr><td>19</td><td>11</td></tr>
-			<tr><td>20</td><td>11</td></tr>
+			<tr style="text-align: center; "><td>6</td><td>5</td></tr>
+			<tr style="text-align: center; "><td>7</td><td>5</td></tr>
+			<tr style="text-align: center; "><td>8</td><td>6</td></tr>
+			<tr style="text-align: center; "><td>9</td><td>6</td></tr>
+			<tr style="text-align: center; "><td>10</td><td>7</td></tr>
+			<tr style="text-align: center; "><td>11</td><td>7</td></tr>
+			<tr style="text-align: center; "><td>12</td><td>8</td></tr>
+			<tr style="text-align: center; "><td>13</td><td>8</td></tr>
+			<tr style="text-align: center; "><td>14</td><td>9</td></tr>
+			<tr style="text-align: center; "><td>15</td><td>9</td></tr>
+			<tr style="text-align: center; "><td>16</td><td>9</td></tr>
+			<tr style="text-align: center; "><td>17</td><td>10</td></tr>
+			<tr style="text-align: center; "><td>18</td><td>10</td></tr>
+			<tr style="text-align: center; "><td>19</td><td>11</td></tr>
+			<tr style="text-align: center; "><td>20</td><td>11</td></tr>
 
 			</tbody>
 		</table>
@@ -464,12 +464,12 @@ echo '<html>
 	<div>
 
       <table class="table">
-        <tr>
+        <tr style="text-align: center; ">
         <br>
           <td style="text-align: left;">Computed by: ________________</td>
           <td style="text-align: right;">Signature/Date: ________________</td>
         </tr>
-        <tr>
+        <tr style="text-align: center; ">
           <td style="text-align: left;">Checked by: ________________</td>
           <td style="text-align: right;">Signature/Date: ________________</td>
         </tr>

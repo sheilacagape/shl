@@ -142,9 +142,9 @@ GROUP BY tbl_triad_codes.`triad_code_id`";
 	}
 
 	public function delForm($z,$id) {
-		$qry = "INSERT INTO tbl_paired_difference_test_sample (pdt_id, sample_code, status, created_by) VALUES ('".$form_id."','',1,'".$user."')";				
-		$this->db->query($qry);
-		return $this->db->insert_id();
+		$qry = "UPDATE tbl_eval_form_test SET status = '".$z."' WHERE id = '".$id."'";	
+
+		return $this->db->query($qry);
 	}
 
 	public function getOneForm($id = null)

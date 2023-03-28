@@ -45,7 +45,7 @@
   
   <h3 class="text-center">DEPARTMENT OF SCIENCE AND TECHNOLOGY - X</h3>
   <h4 class="text-center">Regional Standards and Testing Laboratories</h4>
-  <h4 class="text-center">ACCELERATED SHELF-LIFE EVALUATION LABORATORY</h4>
+  <h4 class="text-center">SHELF-LIFE EVALUATION LABORATORY</h4>
   <hr>
   <h4 class="text-center">Score sheet for Sensory Evaluation</h4>
   <h4 class="text-center">(Paired-Difference Test)</h4> 
@@ -219,7 +219,7 @@
     <br>
 
     
-    <h5 style="text-align: right;">ATM-004 F1<br>Revision 0</h5>  
+    <h5 style="text-align: right;">STM-004 F1<br>Revision 0</h5>  
     
   </div>
 

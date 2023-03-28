@@ -128,12 +128,13 @@
               <?php 
 
                 if(isset($panelist)){
+                  $count = 1;
                   foreach ($panelist as $key) {
               ?>
               <tr>
                 <td><img style="width: 30px; height: 30px; float: right;" src="<?php echo $key->user_pic; ?>"></td>
                 
-                <td><?php echo $key->user_id; ?></td>
+                <td><?php echo $count; ?></td>
                 <td><?php echo $key->firstname." ".$key->lastname; ?></td>
                 <td><?php echo $key->section_unit; ?></td>
                 
@@ -261,6 +262,7 @@
               </tr>
 
               <?php  
+                  $count++;
                   }
                 }
 
@@ -284,6 +286,7 @@
             <tbody>
               <?php 
                 if(isset($analyst)){
+                  $count =1;
                   foreach ($analyst as $key) {
               ?>
               <tr>
@@ -416,6 +419,7 @@
               </tr>
 
               <?php  
+              $count++;
                   }
                 }
 

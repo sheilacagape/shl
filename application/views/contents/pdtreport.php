@@ -24,7 +24,7 @@ echo '<html>
       
       <h3 style="text-align: center;">DEPARTMENT OF SCIENCE AND TECHNOLOGY - X</h3>
       <h4 style="text-align: center;">Regional Standards and Testing Laboratories</h4>
-      <h4 style="text-align: center;">ACCELERATED SHELF-LIFE EVALUATION LABORATORY</h4>
+      <h4 style="text-align: center;">SHELF-LIFE EVALUATION LABORATORY</h4>
       <br>
       <h4 style="text-align: center;">Score sheet for Sensory Evaluation</h4>
       <h4 style="text-align: center;">(Paired-Difference Test)</h4>
@@ -36,7 +36,7 @@ echo '<html>
       <thead>
         <tr>
           <th colspan="3" style="font-size: 12px; "><strong>Name: </strong>'.$panelistdata[0]->lastname.', '.$panelistdata[0]->firstname.'</th>
-          <th colspan="3" style="font-size: 12px; "><strong>Product: </strong>'.$formdata[0]->product.'</th>
+          <th colspan="3" style="font-size: 12px; "><strong>Sample Description: </strong>'.$formdata[0]->product.'</th>
           
         </tr>
         <tr>
@@ -59,30 +59,30 @@ echo '<html>
             
           </tr>
          <tr>
-<th rowspan="2"><strong>Sample Code</strong></th>
-<th colspan="5"><strong>Sample Preffered</strong></th>
+<th rowspan="2" style="text-align: center; "><strong>Sample Code</strong></th>
+<th colspan="5" style="text-align: center; "><strong>Sample Preffered</strong></th>
 
 </tr>
 <tr>';
   if (isset($formAttr[0])) {
     
-    echo '<th ><p >'.$formAttr[0]->attr_desc.'</p></th>';
+    echo '<th style="text-align: center;"><p >'.$formAttr[0]->attr_desc.'</p></th>';
   }
   if (isset($formAttr[1])) {
     
-    echo '<th ><p >'.$formAttr[1]->attr_desc.'</p></th>';
+    echo '<th style="text-align: center;"><p >'.$formAttr[1]->attr_desc.'</p></th>';
   }
   if (isset($formAttr[2])) {
     
-    echo '<th ><p >'.$formAttr[2]->attr_desc.'</p></th>';
+    echo '<th style="text-align: center;"><p >'.$formAttr[2]->attr_desc.'</p></th>';
   }
   if (isset($formAttr[3])) {
     
-    echo '<th ><p >'.$formAttr[3]->attr_desc.'</p></th>';
+    echo '<th style="text-align: center;"><p >'.$formAttr[3]->attr_desc.'</p></th>';
   }
   if (isset($formAttr[4])) {
     
-    echo '<th ><p >'.$formAttr[4]->attr_desc.'</p></th>';
+    echo '<th style="text-align: center;"><p >'.$formAttr[4]->attr_desc.'</p></th>';
   }
  
 

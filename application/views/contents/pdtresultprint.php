@@ -25,7 +25,7 @@ echo '<html>
       <h3 style="text-align: center;">DEPARTMENT OF SCIENCE AND TECHNOLOGY - X</h3>
       <h4 style="text-align: center;">Regional Standards and Testing Laboratories</h4>
       <h4 style="text-align: center;">Shelf life Evaluation Laboratory</h4>
-      <h5 style="text-align: right">ATM-004 F2</h5>
+      <h5 style="text-align: right">STM-004 F2</h5>
       <h5 style="text-align: right">Revision 1</h5>
       <h4 style="text-align: center;">Data Sheet for Sensory Evaluation of Shelf-Life Samples (Paired - Difference Test)</h4>';
     
@@ -34,7 +34,7 @@ echo '<html>
       <table class="table">
         <tr>
         <br>
-          <td>Request Number:</td>
+          <td>Request Reference Number:</td>
           <td><u>'.$pdtanswers[0]->test_request_no.'</u></td>
           <td>Analyzed by:</td>
           <td>________________</td>
@@ -42,7 +42,7 @@ echo '<html>
           <td>________________</td>
         </tr>
         <tr>
-          <td>Laboratory Code Number:</td>
+          <td>Sample Code:</td>
           <td><u>'.$pdtanswers[0]->sample_code.'</u></td>
           <td>Checked by:</td>
           <td>________________</td>
@@ -50,8 +50,8 @@ echo '<html>
           <td>________________</td>
         </tr>
         <tr>
-          <td>Sample Description Code:</td>
-          <td><u>'.$pdtanswers[0]->sample_code.'</u></td>
+          <td>Sample Description:</td>
+          <td><u>'.$pdtanswers[0]->product.'</u></td>
           <td>Date of Analysis:</td>
           <td>________________</td>
           <td></td>
@@ -63,19 +63,19 @@ echo '<html>
     </div>';
     
     echo '<table cellspacing="0" cellpadding="1" border="1">
-              <tr>
+              <tr style="text-align: center; ">
               <th rowspan="3">Panelist</th>
               <th rowspan="3">Random Reference Number</th>
-              <th colspan="5">Lab Code: '.$pdtsamples[0]->sample_code.'</th>
+              <th colspan="5">Lab Code: to update</th>
               <th rowspan="3">Panelist</th>
               <th rowspan="3">Random Reference Number</th>
-              <th colspan="5">Lab Code: '.$pdtsamples[1]->sample_code.'</th>
+              <th colspan="5">Lab Code: to update</th>
               </tr>
-              <tr>
+              <tr style="text-align: center; ">
               <th style="text-align: center;" colspan="5">Attributes</th>
               <th style="text-align: center;" colspan="5">Attributes</th>
               </tr>
-              <tr>
+              <tr style="text-align: center; ">
               <th>'.$pdtattr[0]->attr_desc.'</th>
               <th>'.$pdtattr[1]->attr_desc.'</th>
               <th>'.$pdtattr[2]->attr_desc.'</th>
@@ -88,9 +88,9 @@ echo '<html>
               <th>'.$pdtattr[4]->attr_desc.'</th>
               </tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>1</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[0][0])) {
                 if ($perrecord[0][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -132,7 +132,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>1</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[0][0])) {
                 if ($perrecord[0][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -174,9 +174,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>2</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[1][0])) {
                 if ($perrecord[1][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -218,7 +218,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>2</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[1][0])) {
                 if ($perrecord[1][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -260,9 +260,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>3</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[2][0])) {
                 if ($perrecord[2][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -304,7 +304,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>3</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[2][0])) {
                 if ($perrecord[2][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -346,9 +346,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>4</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[3][0])) {
                 if ($perrecord[3][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -390,7 +390,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>4</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[3][0])) {
                 if ($perrecord[3][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -432,9 +432,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>5</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[4][0])) {
                 if ($perrecord[4][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -476,7 +476,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>5</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[4][0])) {
                 if ($perrecord[4][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -518,9 +518,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>6</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[5][0])) {
                 if ($perrecord[5][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -562,7 +562,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>6</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[5][0])) {
                 if ($perrecord[5][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -604,9 +604,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>7</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[6][0])) {
                 if ($perrecord[6][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -648,7 +648,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>7</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[6][0])) {
                 if ($perrecord[6][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -690,9 +690,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>8</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[7][0])) {
                 if ($perrecord[7][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -734,7 +734,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>8</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[7][0])) {
                 if ($perrecord[7][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -776,9 +776,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>9</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[8][0])) {
                 if ($perrecord[8][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -820,7 +820,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>9</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[8][0])) {
                 if ($perrecord[8][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -862,9 +862,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>10</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[9][0])) {
                 if ($perrecord[9][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -906,7 +906,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>10</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[9][0])) {
                 if ($perrecord[9][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -948,9 +948,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>11</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[10][0])) {
                 if ($perrecord[10][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -992,7 +992,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>11</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[10][0])) {
                 if ($perrecord[10][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -1034,9 +1034,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>12</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[11][0])) {
                 if ($perrecord[11][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -1078,7 +1078,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>12</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[11][0])) {
                 if ($perrecord[11][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -1120,9 +1120,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>13</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[12][0])) {
                 if ($perrecord[12][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -1164,7 +1164,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>13</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[12][0])) {
                 if ($perrecord[12][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -1206,9 +1206,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>14</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[13][0])) {
                 if ($perrecord[13][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -1250,7 +1250,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>14</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[13][0])) {
                 if ($perrecord[13][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -1292,9 +1292,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>15</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[14][0])) {
                 if ($perrecord[14][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -1336,7 +1336,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>15</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[14][0])) {
                 if ($perrecord[14][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -1378,9 +1378,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>16</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[15][0])) {
                 if ($perrecord[15][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -1422,7 +1422,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>16</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[15][0])) {
                 if ($perrecord[15][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -1464,9 +1464,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>17</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[16][0])) {
                 if ($perrecord[16][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -1508,7 +1508,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>17</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[16][0])) {
                 if ($perrecord[16][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -1550,9 +1550,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>18</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[17][0])) {
                 if ($perrecord[17][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -1594,7 +1594,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>18</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[17][0])) {
                 if ($perrecord[17][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -1636,9 +1636,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>19</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[18][0])) {
                 if ($perrecord[18][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -1680,7 +1680,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>19</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[18][0])) {
                 if ($perrecord[18][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";
@@ -1722,9 +1722,9 @@ echo '<html>
                 } 
               echo '</td></tr>';
 
-              echo '<tr>
+              echo '<tr style="text-align: center; ">
               <td>20</td>
-              <td>1</td>
+              <td>'.$pdtsamples[0]->sample_code.'</td>
               <td>';
                 if (isset($perrecord[19][0])) {
                 if ($perrecord[19][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -1766,7 +1766,7 @@ echo '<html>
                   echo "";
                 } 
               echo '</td><td>20</td>
-              <td>2</td><td>';
+              <td>'.$pdtsamples[1]->sample_code.'</td><td>';
                 if (isset($perrecord[19][0])) {
                 if ($perrecord[19][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
                     echo "/";

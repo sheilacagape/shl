@@ -66,7 +66,7 @@ JOIN tbl_est_category ON tbl_est_category.`category_id` = tbl_equipment_type.`ca
 		$qry = "SELECT tbl_eval_form_test.*, tbl_form_type.`test_type`,tbl_users.* FROM tbl_eval_form_test 
 JOIN tbl_form_type ON tbl_eval_form_test.`form_type_id` = tbl_form_type.`id`
 LEFT JOIN tbl_users ON tbl_eval_form_test.`created_by` = tbl_users.`user_id`
-WHERE tbl_eval_form_test.`status` = 1";
+WHERE tbl_eval_form_test.`status` = 1 ORDER BY date_created DESC";
 
 		return $this->db->query($qry)->result();	
 	}

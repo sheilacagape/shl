@@ -27,20 +27,21 @@
 <table class="table table-striped table-bordered table-hover" id="esttable">
   <thead style="background-color: lightblue">
     <tr>
-      <th>Panelist ID: </th>
-      <th>Name: </th>
+      <th>Count </th>
+      <th>Name </th>
       
-      <th>Date Answered: </th>
+      <th>Date Answered </th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <?php 
       if(isset($pdtanswers)){
+        $i = 1;
         foreach ($pdtanswers as $key) {
     ?>
     <tr>
-      <td><?php echo $key->user_id; ?></td>
+      <td><?php echo $i; ?></td>
       <td><?php echo $key->firstname." ".$key->lastname; ?></td>
       <td><?php echo $key->date_answered; ?></td>
       
@@ -52,6 +53,7 @@
     </tr>
 
     <?php
+    $i++;
         }
       }
 

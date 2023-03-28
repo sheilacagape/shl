@@ -34,7 +34,7 @@ echo '<html>
     	<table >
 			<thead>
 				<tr>
-					<th style="font-size: 12px; "><strong>Product Code: </strong>'.$formdata[0]->product_code.'</th>
+					<th style="font-size: 12px; "><strong>Sample Code: </strong>'.$formdata[0]->sample_code.'</th>
 					<th style="font-size: 12px; "><strong>Date: </strong>'.$answer[0]->date_answered.'</th>
 					
 				</tr>

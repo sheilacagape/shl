@@ -14,7 +14,9 @@
         </button></h2> 
   </div>
  </div>
+ 
 <table class="table table-striped table-bordered table-hover" id="esttable">
+
   <thead style="background-color: lightblue">
     <tr>
       <th>Date</th>
@@ -106,22 +108,23 @@
                               </select>
                             </div>
 
-                            <div class="form-group">
-                              <label>Product Name</label>
-                              <input class="form-control" name="samplename" placeholder="Product Name" type="text">
-                            </div>
+                            
                             
                             
                             <div class="form-group">
-                              <label>Request Number</label>
+                              <label>Request Reference Number</label>
                               <input class="form-control" name="trfno" placeholder="R10-2022-SHL-" type="text">
                             </div>
 
                             <div class="form-group">
-                              <label>Sample Description Code</label>
+                              <label>Sample Code</label>
                               <input class="form-control" name="trfcode" placeholder="SHL-" type="text">
                             </div>
-                           
+
+                           <div class="form-group">
+                              <label>Sample Description</label>
+                              <input class="form-control" name="samplename" placeholder="food, / beverage," type="text">
+                            </div>
                           </div>
                             <div style="text-align:  right;">
                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -142,6 +145,7 @@
     
       $(document).ready(function(){
           $('#esttable').DataTable({
+              ordering: false,
               initComplete: function () {
                   this.api().columns().every( function () {
                       var column = this;

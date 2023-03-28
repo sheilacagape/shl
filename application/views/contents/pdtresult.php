@@ -5,7 +5,7 @@
  	<h4 class="text-center">Regional Standards and Testing Laboratories</h4>
  	<h4 class="text-center">Shelf life Evaluation Laboratory</h4>
  	<hr>
- 	<h5 class="text-right">ATM-004 F2</h5>
+ 	<h5 class="text-right">STM-004 F2</h5>
  	<h5 class="text-right">Revision 1</h5>
  	<h4 class="text-center">Data Sheet for Sensory Evaluation of Shelf-Life Samples (Paired - Difference Test)</h4>
  	<hr>
@@ -54,15 +54,15 @@
  	<div class="col-md-12 sidetripDetails"> 
  		<div class="row col-md-12">
  				
-	 				<table class="table ">
+	 				<table class="table table-bordered">
 			 			<thead>
 			 				<tr>
 			 				<th rowspan="3">Panelist</th>
 			 				<th rowspan="3">Random Reference Number</th>
-			 				<th colspan="5">Lab Code: <?php echo  $pdtsamples[0]->sample_code?></th>
+			 				<th colspan="5">Lab Code: to update</th>
 			 				<th rowspan="3">Panelist</th>
 			 				<th rowspan="3">Random Reference Number</th>
-			 				<th colspan="5">Lab Code: <?php echo  $pdtsamples[1]->sample_code?></th>
+			 				<th colspan="5">Lab Code: to update</th>
 			 				</tr>
 			 				<tr>
 			 				<th style="text-align: center;" colspan="5">Attributes</th>
@@ -87,7 +87,7 @@
 			 						?>
 			 						<tr>
 					 					<td><?php echo $i+1; ?></td>
-					 					<td>1</td>
+					 					<td><?php echo  $pdtsamples[0]->sample_code?></td>
 					 					<td>
 					 						<?php if (isset($perrecord[$i][0])) {
 					 						if ($perrecord[$i][0]->pdt_sample_odd_id==$pdtsamples[0]->pdt_sample_id) {
@@ -135,7 +135,7 @@
 						 					} ?>
 					 					</td>
 					 					<td><?php echo $i+1; ?></td>
-					 					<td>2</td>
+					 					<td><?php echo  $pdtsamples[1]->sample_code?></td>
 					 					<td>
 					 						<?php if (isset($perrecord[$i][0])) {
 					 						if ($perrecord[$i][0]->pdt_sample_odd_id==$pdtsamples[1]->pdt_sample_id) {
