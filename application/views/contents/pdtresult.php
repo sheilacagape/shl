@@ -15,7 +15,7 @@
 
  <div class="row col-md-12">
 <?php 
-//echo '<pre>' . var_export($perrecord, true) . '</pre>';
+//echo '<pre>' . var_export($pdtanswers, true) . '</pre>';
 ?>
 
  	<div>
@@ -59,10 +59,40 @@
 			 				<tr>
 			 				<th rowspan="3">Panelist</th>
 			 				<th rowspan="3">Random Reference Number</th>
-			 				<th colspan="5">Lab Code: to update</th>
+			 				<th colspan="5">
+			 					<h5 id="<?php echo('editsamplea'.$pdtanswers[0]->id); ?>">Lab Code: <?php echo $pdtanswers[0]->tt_sample_one ?>
+						 			<span data-toggle="tooltip" data-placement="top" title="Edit Sample A" class="glyphicon glyphicon-pencil color editsamplea" aria-hidden="true" id="<?php echo $pdtanswers[0]->id; ?>" style="cursor: pointer; "></span> &nbsp;
+								</h5>
+
+			        <form method="POST" style="display: none;" class="editasample" id="<?php echo "editasample".$pdtanswers[0]->id; ?>">
+			          <br><label>Lab Code: </label>
+			          <div class="input-group">
+			          	
+									<input type="text" class="form-control" name="samplea" placeholder="Sample A" value="<?php echo $pdtanswers[0]->tt_sample_one ?>">
+									<div class="input-group-btn">
+									<button type="button" class="btn btn-default cancelasample" id="<?php echo $pdtanswers[0]->id; ?>"><span class="glyphicon glyphicon-remove-circle color" aria-hidden="true" style="cursor: pointer; "></span></button>
+									<button type="button" class="btn btn-primary saveasample" id="<?php echo $pdtanswers[0]->id; ?>"><span class="glyphicon glyphicon-ok-circle color" aria-hidden="true" style="cursor: pointer; "></span></button>
+									</div>
+
+			 				</th>
 			 				<th rowspan="3">Panelist</th>
 			 				<th rowspan="3">Random Reference Number</th>
-			 				<th colspan="5">Lab Code: to update</th>
+			 				<th colspan="5">
+			 					<h5 id="<?php echo('editsampleb'.$pdtanswers[0]->id); ?>">Lab Code: <?php echo $pdtanswers[0]->tt_sample_two ?>
+						 			<span data-toggle="tooltip" data-placement="top" title="Edit Sample B" class="glyphicon glyphicon-pencil color editsampleb" aria-hidden="true" id="<?php echo $pdtanswers[0]->id; ?>" style="cursor: pointer; "></span> &nbsp;
+								</h5>
+
+			        <form method="POST" style="display: none;" class="editbsample" id="<?php echo "editbsample".$pdtanswers[0]->id; ?>">
+			          <br><label>Lab Code:</label>
+			          <div class="input-group">
+			          	
+									<input type="text" class="form-control" name="sampleb" placeholder="Sample B" value="<?php echo $pdtanswers[0]->tt_sample_two ?>">
+									<div class="input-group-btn">
+									<button type="button" class="btn btn-default cancelbsample" id="<?php echo $pdtanswers[0]->id; ?>"><span class="glyphicon glyphicon-remove-circle color" aria-hidden="true" style="cursor: pointer; "></span></button>
+									<button type="button" class="btn btn-primary savebsample" id="<?php echo $pdtanswers[0]->id; ?>"><span class="glyphicon glyphicon-ok-circle color" aria-hidden="true" style="cursor: pointer; "></span></button>
+									</div>
+
+			 				</th>
 			 				</tr>
 			 				<tr>
 			 				<th style="text-align: center;" colspan="5">Attributes</th>
@@ -260,5 +290,132 @@
  <div class="alert" style="text-align: center; color: white; position:fixed;top:50%;left:50%;width:500px;height:50px;margin-left:-250px;margin-top:-25px;opacity: 0.7; background-color: gray;display: none;"></div>
 
  <script type="text/javascript">
+ 	$('.editsamplea').on('click',function(){
+    var id = $(this).attr('id');
 
+    $('#editasample'+id).show();
+    $('#editsamplea'+id).hide();
+  });
+
+  $('.cancelasample').on('click',function(){
+    var id = $(this).attr('id');
+
+    $('#editasample'+id).hide();
+    $('#editsamplea'+id).show();
+  });
+
+  $('.saveasample').on('click',function(){
+    var id = $(this).attr('id');
+
+    $('#editasample'+id).hide();
+    $('#editsamplea'+id).show();
+
+    var samplea = $("input[name=samplea").val();
+    var evalid = $("input[name=evalid]").val()
+    var details = new Array(evalid, samplea);
+      
+    $.ajax({
+			url: "http://"+window.location.host+"/shl/shlform/updateSampleA",
+			type: "POST",
+			data: {"data":details},
+			success: function(data){
+
+				$("#reloadDiv").load("http://"+window.location.host+"/shl/shlform/getpdtanswers",{id:data});
+				
+				var fade_in = function() {
+				  // $(".alert").fadeOut().empty();
+				  $('.alert').text( "Successfully updated Sample A." );
+				  $(".alert").show();
+				  $('.modal-backdrop').remove(); // removes the grey overlay.
+				}
+
+				var fade_out = function() {
+				  $(".alert").fadeOut().empty();
+				  // $(".alert").show();
+				}
+				setTimeout(fade_in,500);
+				setTimeout(fade_out, 3000);
+			},
+			error: function(){
+				
+				var fade_in = function() {
+				  // $(".alert").fadeOut().empty();
+				  $('.alert').text( "Unable to update Sample A." );
+				  $(".alert").show();
+				}
+
+				var fade_out = function() {
+				  $(".alert").fadeOut().empty();
+				  // $(".alert").show();
+				}
+				setTimeout(fade_in,500);
+				setTimeout(fade_out, 3000);
+			}
+    });
+    });
+
+
+  $('.editsampleb').on('click',function(){
+    var id = $(this).attr('id');
+
+    $('#editbsample'+id).show();
+    $('#editsampleb'+id).hide();
+  });
+
+  $('.cancelbsample').on('click',function(){
+    var id = $(this).attr('id');
+
+    $('#editbsample'+id).hide();
+    $('#editsampleb'+id).show();
+  });
+
+  $('.savebsample').on('click',function(){
+    var id = $(this).attr('id');
+
+    $('#edibsample'+id).hide();
+    $('#editsampleb'+id).show();
+
+    var sampleb = $("input[name=sampleb").val();
+    var evalid = $("input[name=evalid]").val()
+    var details = new Array(evalid, sampleb);
+      
+    $.ajax({
+			url: "http://"+window.location.host+"/shl/shlform/updateSampleB",
+			type: "POST",
+			data: {"data":details},
+			success: function(data){
+
+				$("#reloadDiv").load("http://"+window.location.host+"/shl/shlform/getpdtanswers",{id:data});
+				
+				var fade_in = function() {
+				  // $(".alert").fadeOut().empty();
+				  $('.alert').text( "Successfully updated Sample B." );
+				  $(".alert").show();
+				  $('.modal-backdrop').remove(); // removes the grey overlay.
+				}
+
+				var fade_out = function() {
+				  $(".alert").fadeOut().empty();
+				  // $(".alert").show();
+				}
+				setTimeout(fade_in,500);
+				setTimeout(fade_out, 3000);
+			},
+			error: function(){
+				
+				var fade_in = function() {
+				  // $(".alert").fadeOut().empty();
+				  $('.alert').text( "Unable to update Sample B." );
+				  $(".alert").show();
+				}
+
+				var fade_out = function() {
+				  $(".alert").fadeOut().empty();
+				  // $(".alert").show();
+				}
+				setTimeout(fade_in,500);
+				setTimeout(fade_out, 3000);
+			}
+    });
+    });
  </script>

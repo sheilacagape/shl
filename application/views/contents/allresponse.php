@@ -9,7 +9,6 @@
     <tr>
       <th>Evaluation Type </th>
       <th>Sample Name </th>
-      
       <th>Created by </th>
       <th>Date Created</th>
       <th>Actions</th>

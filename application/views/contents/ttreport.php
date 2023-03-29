@@ -40,7 +40,7 @@ echo '<html>
 				</tr>
 				<tr>
 					<th style="font-size: 12px; "><strong>Name: </strong>'.$panelistdata[0]->lastname.', '.$panelistdata[0]->firstname.'</th>
-					<th style="font-size: 12px; "><strong>Panelist No.: </strong>'.$panelistdata[0]->user_id.'</th>
+					<th style="font-size: 12px; "><strong>Panelist No.: </strong>'.$answer[0]->instance.'</th>
 					
 				</tr>
 			</thead>

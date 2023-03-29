@@ -40,7 +40,7 @@ echo '<html>
           
         </tr>
         <tr>
-          <th colspan="3" style="font-size: 12px; "><strong>Panelist No.: </strong>'.$panelistdata[0]->user_id.'</th>
+          <th colspan="3" style="font-size: 12px; "><strong>Panelist No.: </strong>'.$count.'</th>
           <th colspan="3" style="font-size: 12px; "><strong>Date: </strong></th>
           
         </tr>

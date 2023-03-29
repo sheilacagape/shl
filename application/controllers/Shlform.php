@@ -504,7 +504,7 @@ class Shlform extends Main {
 			$ftid = $this->input->get('ftid');
 			$fid = $this->input->get('formid');
 			$userid = $this->input->get('userid');
-			
+			$count = $this->input->get('count');
 			
 			if ($ftid == 1 ) {
 			    $data['formdata'] = $this->Shlform_model->getOneForm($fid);
@@ -516,6 +516,7 @@ class Shlform extends Main {
 				$data['answer'] = $this->Shlform_model->getPanelistAnswer($userid,$fid,1);
 				$this->db->reconnect();
 				$data['formAttr'] = $this->Shlform_model->getFormAttr($fid);
+				$data['count'] = $count;
 				$data['activeAttr'] = 0;
 				for ($i=0; $i < count($data['formAttr']); $i++) { 
 					if ($data['formAttr'][$i]->status == "1") {

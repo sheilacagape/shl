@@ -10,6 +10,8 @@
   if (isset($pdtanswers)) {
     
     ?>
+
+
 <div class="row col-md-12 text-center " style="text-align:center">
 
   <input type="hidden" id="<?php echo $id; ?>" name="formid" value="<?php echo $id; ?>">
@@ -48,7 +50,7 @@
       <td>
         <input type="hidden" id="<?php echo $key->pda_id."pdtuser"; ?>" name="<?php echo $key->pda_id."pdtuser"; ?>" value="<?php echo $key->user_id; ?>">
         
-         <a target="_blank" href="<?= base_url('shlform/printresponse?t_id='.$key->pda_id.'&ftid='.$ftid.'&formid='.$id.'&userid='.$key->user_id) ;?>" >PRINT <span data-toggle="tooltip" data-placement="top" title="Print Response"  class="glyphicon glyphicon-print printresponse color" aria-hidden="true" id="<?php echo($key->pda_id); ?>" style="cursor: pointer; color: green;"></span> &nbsp; </span></a>
+         <a target="_blank" href="<?= base_url('shlform/printresponse?t_id='.$key->pda_id.'&ftid='.$ftid.'&formid='.$id.'&userid='.$key->user_id.'&count='.$i) ;?>" >PRINT <span data-toggle="tooltip" data-placement="top" title="Print Response"  class="glyphicon glyphicon-print printresponse color" aria-hidden="true" id="<?php echo($key->pda_id); ?>" style="cursor: pointer; color: green;"></span> &nbsp; </span></a>
       </td>
     </tr>
 
