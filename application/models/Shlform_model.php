@@ -83,6 +83,11 @@ class Shlform_model extends CI_Model {
 		return $this->db->query($qry);
 	}
 	
+	public function updateRemarks($data){
+		$qry = "UPDATE tbl_eval_form_test SET tt_panel_remarks = '".$data[1]."' WHERE id = '".$data[0]."'";	
+		return $this->db->query($qry);
+	}
+
 	public function updateSampleA($data){
 		$qry = "UPDATE tbl_eval_form_test SET tt_sample_one = '".$data[1]."' WHERE id = '".$data[0]."'";	
 		return $this->db->query($qry);
@@ -90,6 +95,16 @@ class Shlform_model extends CI_Model {
 
 	public function updateSampleB($data){
 		$qry = "UPDATE tbl_eval_form_test SET tt_sample_two = '".$data[1]."' WHERE id = '".$data[0]."'";	
+		return $this->db->query($qry);
+	}
+
+	public function updateCommentA($data){
+		$qry = "UPDATE tbl_eval_form_test SET pdt_panel_comment_a = '".$data[1]."' WHERE id = '".$data[0]."'";	
+		return $this->db->query($qry);
+	}
+
+	public function updateCommentB($data){
+		$qry = "UPDATE tbl_eval_form_test SET pdt_panel_comment_b = '".$data[1]."' WHERE id = '".$data[0]."'";	
 		return $this->db->query($qry);
 	}
 
@@ -262,6 +277,12 @@ JOIN tbl_triangle_test_sample ON tbl_triangle_test_answers.`panelist_id` = tbl_t
 		return $this->db->query($qry)->result();
 	}
 
+	public function getCorrect($id, $instance)
+	{ 
+		$qry = "SELECT * FROM tbl_triad_codes WHERE triangle_tid = '".$id."' AND triad_no = '".$instance."' AND answer = 'yes'";
+		return $this->db->query($qry)->result();
+	}
+
 	public function getOneEvalAnswers($id,$ftid)
 	{
 		if($ftid == 1) {
@@ -301,5 +322,13 @@ LEFT JOIN tbl_paired_difference_answers ON tbl_paired_difference_answers.`paneli
 		$qry = "SELECT * FROM tbl_paired_diff_attr WHERE pdt_id  = '".$id."'";
 
 		 return $this->db->query($qry)->result();
+	}
+
+	
+
+	public function setComment($id, $comment)
+	{ 
+		$qry = "UPDATE tbl_eval_form_test SET pdt_panel_comment_a = '".$comment."', pdt_panel_comment_b = '".$comment."' WHERE id = '".$id."'";	
+		return $this->db->query($qry);
 	}
 }

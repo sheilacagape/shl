@@ -120,8 +120,19 @@ echo '<html>
 					<tr>
 						<br>
 						<br>
-						<td colspan="2" style="font-size: 10px; ">Panelist`s Answer: ____ Correct ____ Incorrect      
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<td colspan="2" style="font-size: 10px; ">Panelist`s Answer: ';
+						if(isset($answer[0])){
+	 						if ($correct[0]->triad_code_id == $answer[0]->tt_sample_odd_id) {
+	 							
+	 							echo '<u style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</u> Correct ____ Incorrect';
+	 						} else {
+	 						
+	 						echo'____ Correct <u style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</u> Incorrect';
+	 						
+	 						}
+		 				}
+						echo   
+						'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						Checked by/Date:	_____________________
 						</td>
 					</tr>

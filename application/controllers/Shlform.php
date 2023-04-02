@@ -124,6 +124,15 @@ class Shlform extends Main {
 	}
 
 	
+	public function updateRemarks(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
+			$data = $this->input->post('data');
+			$this->Shlform_model->updateRemarks($data);
+
+			echo $data[0];
+		}
+	}
+
 	public function updateSampleA(){
 		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
 			$data = $this->input->post('data');
@@ -137,6 +146,25 @@ class Shlform extends Main {
 		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
 			$data = $this->input->post('data');
 			$this->Shlform_model->updateSampleB($data);
+
+			echo $data[0];
+		}
+	}
+
+	
+	public function updateCommentA(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
+			$data = $this->input->post('data');
+			$this->Shlform_model->updateCommentA($data);
+
+			echo $data[0];
+		}
+	}
+
+	public function updateCommentB(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
+			$data = $this->input->post('data');
+			$this->Shlform_model->updateCommentB($data);
 
 			echo $data[0];
 		}
@@ -291,10 +319,13 @@ class Shlform extends Main {
 				$data['pdtanswers'] = $this->Shlform_model->getOneEvalAnswers($id,$ftid);
 				$this->db->reconnect();
 				$data['perrecord'] = array();
+				$data['comment'] = "";
+
 				for ($i=0; $i < count($data['pdtanswers']); $i++) { 
 					$rec = $this->Shlform_model->getOnePDTAnswer($id,$data['pdtanswers'][$i]->user_id);
 					$this->db->reconnect();
 					array_push($data['perrecord'],$rec);
+					$data['comment'] .= $data['pdtanswers'][$i]->comments ."; ";
 				}
 
 				for ($i=0; $i < count($data['perrecord']); $i++) { 
@@ -357,6 +388,8 @@ class Shlform extends Main {
 				$data['triad'] = $this->Shlform_model->getTriads($id);
 				$data['check'] = 0;
 				$data['wrong'] = 0;
+				$data['comment'] = "";
+
 				for ($i=0; $i < count($data['ttanswers']); $i++) { 
 					if ($data['ttanswers'][$i]->tt_sample_odd_id == $data['triad'][$i]->triad_code_id) {
 						
@@ -366,6 +399,7 @@ class Shlform extends Main {
 					if ($data['ttanswers'][$i]->tt_sample_odd_id != $data['triad'][$i]->triad_code_id) {
 						$data['wrong']++;
 					}
+					$data['comment'] .= $data['ttanswers'][$i]->comments ."; ";
 				}
 				$this->load->view('contents/ttresult',$data);
 			} else {
@@ -532,6 +566,8 @@ class Shlform extends Main {
 			    $data['formdata'] = $this->Shlform_model->getOneForm($fid);
 			    $this->db->reconnect();
 			    $data['answer'] = $this->Shlform_model->getAnswer($aid,2,$data['formdata'][0]->id);
+			    $this->db->reconnect();
+			    $data['correct'] = $this->Shlform_model->getCorrect($data['answer'][0]->tt_id, $data['answer'][0]->instance);
 			    $this->db->reconnect();
 			    $data['oneFormSamples'] = $this->Shlform_model->getOneFormSamples($fid,2,$data['answer'][0]->panelist_id,$data['answer'][0]->tt_instance_id);
 			    $this->db->reconnect();

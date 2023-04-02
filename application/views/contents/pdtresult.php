@@ -53,7 +53,7 @@
  	
  	<div class="col-md-12 sidetripDetails"> 
  		<div class="row col-md-12">
- 				
+ 				<input type="hidden"  name="evalid" id="<?php echo $pdtanswers[0]->id; ?>" value="<?php echo $pdtanswers[0]->id; ?>">
 	 				<table class="table table-bordered">
 			 			<thead>
 			 				<tr>
@@ -73,6 +73,8 @@
 									<button type="button" class="btn btn-default cancelasample" id="<?php echo $pdtanswers[0]->id; ?>"><span class="glyphicon glyphicon-remove-circle color" aria-hidden="true" style="cursor: pointer; "></span></button>
 									<button type="button" class="btn btn-primary saveasample" id="<?php echo $pdtanswers[0]->id; ?>"><span class="glyphicon glyphicon-ok-circle color" aria-hidden="true" style="cursor: pointer; "></span></button>
 									</div>
+								</div>
+							</form>
 
 			 				</th>
 			 				<th rowspan="3">Panelist</th>
@@ -91,6 +93,9 @@
 									<button type="button" class="btn btn-default cancelbsample" id="<?php echo $pdtanswers[0]->id; ?>"><span class="glyphicon glyphicon-remove-circle color" aria-hidden="true" style="cursor: pointer; "></span></button>
 									<button type="button" class="btn btn-primary savebsample" id="<?php echo $pdtanswers[0]->id; ?>"><span class="glyphicon glyphicon-ok-circle color" aria-hidden="true" style="cursor: pointer; "></span></button>
 									</div>
+								</div>
+							</form>
+
 
 			 				</th>
 			 				</tr>
@@ -260,14 +265,30 @@
 
         <tr>
           <td rowspan="2" colspan="2">Panelist comments: 
-          	<br> ______________________________________________________________
-          	<br> ______________________________________________________________
-          	<br> ______________________________________________________________
+          	<textarea class="form-control" id="commentsa" name="commentsa" rows="3">
+				    	<?php 
+				    		if ($pdtanswers[0]->pdt_panel_comment_a == "") {
+				    			echo $comment;
+				    		} else {
+				    			echo $pdtanswers[0]->pdt_panel_comment_a;
+				    		}
+				    		
+							?>
+				    </textarea>
+				    <button type="button" class="btn btn-primary btn-xs submitcommenta" >Save</button>
           </td>
           <td rowspan="2" colspan="2">Panelist comments: 
-          	<br> ______________________________________________________________
-          	<br> ______________________________________________________________
-          	<br> ______________________________________________________________
+          	<textarea class="form-control" id="commentsb" name="commentsb" rows="3">
+				    	<?php 
+				    		if ($pdtanswers[0]->pdt_panel_comment_b == "") {
+				    			echo $comment;
+				    		} else {
+				    			echo $pdtanswers[0]->pdt_panel_comment_b;
+				    		}
+				    		
+							?>
+				    </textarea>
+				    <button type="button" class="btn btn-primary btn-xs submitcommentb" >Save</button>
           </td>
           
         </tr>
@@ -319,9 +340,10 @@
 			type: "POST",
 			data: {"data":details},
 			success: function(data){
-
-				$("#reloadDiv").load("http://"+window.location.host+"/shl/shlform/getpdtanswers",{id:data});
-				
+				var ftid = 1;
+      
+      	$("#reloadDiv").load('http://'+window.location.host+'/shl/shlform/seeEvaluationSummary',{id:data,ftid:ftid});
+      
 				var fade_in = function() {
 				  // $(".alert").fadeOut().empty();
 				  $('.alert').text( "Successfully updated Sample A." );
@@ -384,9 +406,10 @@
 			type: "POST",
 			data: {"data":details},
 			success: function(data){
-
-				$("#reloadDiv").load("http://"+window.location.host+"/shl/shlform/getpdtanswers",{id:data});
-				
+				var ftid = 1;
+      
+      $("#reloadDiv").load('http://'+window.location.host+'/shl/shlform/seeEvaluationSummary',{id:data,ftid:ftid});
+      				
 				var fade_in = function() {
 				  // $(".alert").fadeOut().empty();
 				  $('.alert').text( "Successfully updated Sample B." );
@@ -406,6 +429,98 @@
 				var fade_in = function() {
 				  // $(".alert").fadeOut().empty();
 				  $('.alert').text( "Unable to update Sample B." );
+				  $(".alert").show();
+				}
+
+				var fade_out = function() {
+				  $(".alert").fadeOut().empty();
+				  // $(".alert").show();
+				}
+				setTimeout(fade_in,500);
+				setTimeout(fade_out, 3000);
+			}
+    });
+    });
+
+  $('.submitcommenta').on('click',function(){
+    var comments = $("textarea[name=commentsa]").val();
+    var evalid = $("input[name=evalid]").val()
+    var details = new Array(evalid, comments);
+      
+    $.ajax({
+			url: "http://"+window.location.host+"/shl/shlform/updateCommentA",
+			type: "POST",
+			data: {"data":details},
+			success: function(data){
+				var ftid = 1;
+      
+      $("#reloadDiv").load('http://'+window.location.host+'/shl/shlform/seeEvaluationSummary',{id:data,ftid:ftid});
+      				
+				var fade_in = function() {
+				  // $(".alert").fadeOut().empty();
+				  $('.alert').text( "Successfully updated comment." );
+				  $(".alert").show();
+				  $('.modal-backdrop').remove(); // removes the grey overlay.
+				}
+
+				var fade_out = function() {
+				  $(".alert").fadeOut().empty();
+				  // $(".alert").show();
+				}
+				setTimeout(fade_in,500);
+				setTimeout(fade_out, 3000);
+			},
+			error: function(){
+				
+				var fade_in = function() {
+				  // $(".alert").fadeOut().empty();
+				  $('.alert').text( "Unable to update comment." );
+				  $(".alert").show();
+				}
+
+				var fade_out = function() {
+				  $(".alert").fadeOut().empty();
+				  // $(".alert").show();
+				}
+				setTimeout(fade_in,500);
+				setTimeout(fade_out, 3000);
+			}
+    });
+    });
+
+  $('.submitcommentb').on('click',function(){
+    var comments = $("textarea[name=commentsb]").val();
+    var evalid = $("input[name=evalid]").val()
+    var details = new Array(evalid, comments);
+      
+    $.ajax({
+			url: "http://"+window.location.host+"/shl/shlform/updateCommentB",
+			type: "POST",
+			data: {"data":details},
+			success: function(data){
+				var ftid = 1;
+      
+      $("#reloadDiv").load('http://'+window.location.host+'/shl/shlform/seeEvaluationSummary',{id:data,ftid:ftid});
+      				
+				var fade_in = function() {
+				  // $(".alert").fadeOut().empty();
+				  $('.alert').text( "Successfully updated comment." );
+				  $(".alert").show();
+				  $('.modal-backdrop').remove(); // removes the grey overlay.
+				}
+
+				var fade_out = function() {
+				  $(".alert").fadeOut().empty();
+				  // $(".alert").show();
+				}
+				setTimeout(fade_in,500);
+				setTimeout(fade_out, 3000);
+			},
+			error: function(){
+				
+				var fade_in = function() {
+				  // $(".alert").fadeOut().empty();
+				  $('.alert').text( "Unable to update comment." );
 				  $(".alert").show();
 				}
 

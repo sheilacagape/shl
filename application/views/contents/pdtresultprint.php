@@ -66,10 +66,10 @@ echo '<html>
               <tr style="text-align: center; ">
               <th rowspan="3">Panelist</th>
               <th rowspan="3">Random Reference Number</th>
-              <th colspan="5">Lab Code: to update</th>
+              <th colspan="5">Lab Code: '.$pdtanswers[0]->tt_sample_one.'</th>
               <th rowspan="3">Panelist</th>
               <th rowspan="3">Random Reference Number</th>
-              <th colspan="5">Lab Code: to update</th>
+              <th colspan="5">Lab Code: '.$pdtanswers[0]->tt_sample_two.'</th>
               </tr>
               <tr style="text-align: center; ">
               <th style="text-align: center;" colspan="5">Attributes</th>
@@ -1835,15 +1835,11 @@ echo '<html>
       echo '</tr>
 
     <tr>
-      <td rowspan="2" colspan="2">Panelist comments: 
-        <br> ______________________________________________________________
-        <br> ______________________________________________________________
-        <br> ______________________________________________________________
+      <td rowspan="2" colspan="2">Panelist comments: <br><u>
+        '.$pdtanswers[0]->pdt_panel_comment_a.'</u>
       </td>
-      <td rowspan="2" colspan="2">Panelist comments: 
-        <br> ______________________________________________________________
-        <br> ______________________________________________________________
-        <br> ______________________________________________________________
+      <td rowspan="2" colspan="2">Panelist comments: <br><u>
+        '.$pdtanswers[0]->pdt_panel_comment_b.'</u> 
       </td>
       
     </tr>

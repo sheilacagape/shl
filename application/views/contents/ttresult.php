@@ -10,10 +10,13 @@
  		
  </div>
 
-
+<div class="row col-md-12">
+<?php 
+//echo '<pre>' . var_export($ttanswers, true) . '</pre>';
+?>
 
  <div class="row col-md-12">
- 	
+ 	<input type="hidden"  name="evalid" id="<?php echo $ttanswers[0]->id; ?>" value="<?php echo $ttanswers[0]->id; ?>">
  	<div class="col-md-12 sidetripDetails"> 
  		<h5>Request No.: <u><?php echo ($ttanswers[0]->test_request_no) ?></u></h5>
 		<h5>Laboratory Code No.: <u><?php echo ($ttanswers[0]->sample_code) ?></u></h5>
@@ -138,7 +141,19 @@
  	</ol>
  	<br>
 
-	<h5 >Remarks: ____________________________________________________________________________________________</h5>
+	<h5 >Remarks: </h5>
+		<textarea class="form-control" id="remarks" name="remarks" rows="3">
+			
+			<?php 
+    		if ($ttanswers[0]->tt_panel_remarks== "") {
+    			echo $comment;
+    		} else {
+    			echo $ttanswers[0]->tt_panel_remarks;
+    		}
+    		
+			?>
+    </textarea>
+    <button type="button" class="btn btn-primary btn-xs remarks" >Save</button>
 
 	<br>
 	<div>
@@ -172,5 +187,49 @@
  <div class="alert" style="text-align: center; color: white; position:fixed;top:50%;left:50%;width:500px;height:50px;margin-left:-250px;margin-top:-25px;opacity: 0.7; background-color: gray;display: none;"></div>
 
  <script type="text/javascript">
+ 	$('.remarks').on('click',function(){
+    var comments = $("textarea[name=remarks]").val();
+    var evalid = $("input[name=evalid]").val()
+    var details = new Array(evalid, comments);
+      
+    $.ajax({
+			url: "http://"+window.location.host+"/shl/shlform/updateRemarks",
+			type: "POST",
+			data: {"data":details},
+			success: function(data){
+				var ftid = 2;
+      
+      $("#reloadDiv").load('http://'+window.location.host+'/shl/shlform/seeEvaluationSummary',{id:data,ftid:ftid});
+      				
+				var fade_in = function() {
+				  // $(".alert").fadeOut().empty();
+				  $('.alert').text( "Successfully updated remarks." );
+				  $(".alert").show();
+				  $('.modal-backdrop').remove(); // removes the grey overlay.
+				}
 
+				var fade_out = function() {
+				  $(".alert").fadeOut().empty();
+				  // $(".alert").show();
+				}
+				setTimeout(fade_in,500);
+				setTimeout(fade_out, 3000);
+			},
+			error: function(){
+				
+				var fade_in = function() {
+				  // $(".alert").fadeOut().empty();
+				  $('.alert').text( "Unable to update remarks." );
+				  $(".alert").show();
+				}
+
+				var fade_out = function() {
+				  $(".alert").fadeOut().empty();
+				  // $(".alert").show();
+				}
+				setTimeout(fade_in,500);
+				setTimeout(fade_out, 3000);
+			}
+    });
+    });
  </script>
