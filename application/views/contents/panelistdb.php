@@ -135,6 +135,9 @@
 
  ?>
  <input type="hidden" name="user_id" value="<?php echo $user[0]->user_id; ?>">
+  <input type="hidden" name="password" value="<?php echo $user[0]->password; ?>">
+
+
   <div id="reloadDiv" class="col-md-10" >
     
   </div><div id="wait" style="display:none;width:100px;height:100px;position:absolute;top:50%;left:50%;"><img src='<?= base_url('loading.gif') ?>' width="200" height="200" /></div>
@@ -157,4 +160,72 @@
 
     
   });
+
+  $('#updatepassword').on('click',function(){
+    var userid = $("input[name=user_id").val();
+    var currpass = $("input[name=password").val();
+    var tcurrpass = $("input[name=currpass").val();
+    var newpass = $("input[name=newpass]").val();
+    var tnewpass = $("input[name=confirmnewpass]").val();
+
+    if (currpass == tcurrpass) {
+      if (newpass == tnewpass) {
+        var formdata = new Array(userid, currpass,tcurrpass,newpass,tnewpass);
+        
+        $("#editpassword").hide();
+
+        $.ajax({
+          url: "http://"+window.location.host+"/shl/main/updatePassword",
+          type: "POST",
+          data: {"data":formdata},
+          success: function(data){
+            $("#reloadDiv").load("http://"+window.location.host+"/shl/main/gotoPanelistView",{id:data});
+            
+            var fade_in = function() {
+              // $(".alert").fadeOut().empty();
+              $('.alert').text( "Successfully updated password." );
+              $(".alert").show();
+              $('.modal-backdrop').remove(); // removes the grey overlay.
+            }
+
+            var fade_out = function() {
+              $(".alert").fadeOut().empty();
+              // $(".alert").show();
+            }
+            setTimeout(fade_in,500);
+            setTimeout(fade_out, 3000);
+          },
+          error: function(){
+            
+            var fade_in = function() {
+              // $(".alert").fadeOut().empty();
+              $('.alert').text( "Unable to update password." );
+              $(".alert").show();
+            }
+
+            var fade_out = function() {
+              $(".alert").fadeOut().empty();
+              // $(".alert").show();
+            }
+            setTimeout(fade_in,500);
+            setTimeout(fade_out, 3000);
+          }
+        });
+      } else {
+        alert("New password doesn't match!");  
+        $("input[name=currpass").val("");
+        $("input[name=newpass]").val("");
+        $("input[name=confirmnewpass]").val("");
+      }
+    } else {
+      alert("Incorrect current password!");
+      $("input[name=currpass").val("");
+      $("input[name=newpass]").val("");
+      $("input[name=confirmnewpass]").val("");
+    } 
+
+    
+  });
+
+
 </script>

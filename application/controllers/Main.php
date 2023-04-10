@@ -91,6 +91,25 @@ class Main extends CI_Controller {
 			}
 		}
 	}
+
+	public function gotoPanelistView(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==1)){
+			$id = $this->input->post('id');
+
+			$this->panelistView($id);
+			
+		}
+	}
+
+	public function updatePassword(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==1)){
+			$data = $this->input->post('data');
+			
+			$this->Main_model->updatePassword($data);
+			echo $data[0];;
+					
+		}
+	}
 	
 	public function updateUser (){
 		

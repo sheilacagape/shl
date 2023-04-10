@@ -45,6 +45,13 @@ class Main_model extends CI_Model {
 		return $this->db->query($qry);
 	}
 
+	public function updatePassword($data){
+		
+		$qry = "UPDATE tbl_users SET password='".$data[3]."' WHERE user_id = '".$data[0]."'";
+		// var_dump($qry);
+		return $this->db->query($qry);
+	}
+
 	public function addUserAttach($link,$id){
 		
 		$qry = "UPDATE tbl_users SET user_pic='".$link."' WHERE user_id = '".$id."'";
