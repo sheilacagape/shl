@@ -215,7 +215,7 @@
                               </div>
 
                               <div class="form-group">
-                                <label>Section/Unit</label>
+                                <label>Password</label>
                                 <input class="form-control" name="<?php echo($key->user_id.'pw'); ?>" placeholder="Password" value="<?php echo $key->password; ?>" type="text">
                               </div>
                             </form> 
@@ -372,7 +372,7 @@
                               </div>
 
                               <div class="form-group">
-                                <label>Section/Unit</label>
+                                <label>Password</label>
                                 <input class="form-control" name="<?php echo($key->user_id.'pw'); ?>" placeholder="Password" value="<?php echo $key->password; ?>" type="text">
                               </div>
                             </form> 

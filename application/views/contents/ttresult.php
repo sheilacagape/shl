@@ -31,7 +31,7 @@
  				<div class=" col-md-6">
  					
  					
-	 				<table class="table table-bordered">
+	 				<table class="table table-bordered" style="text-align:center;">
 			 			<thead>
 			 				<tr>
 			 				<th rowspan="2"></th>
@@ -101,8 +101,8 @@
 				 <div class=" col-md-6">
 				 	<h5>Table 1</h5>
  					
-	 				<table class="table table-bordered">
-			 			<thead>
+	 				<table class="table table-bordered" style="text-align:center;"	>
+			 			<thead style="text-align:center;"	>
 			 				<th>n</th>
 			 				<th>α = 0,05</th>
 			 				

@@ -46,7 +46,63 @@
  	<hr>
  	<h4 class="text-center">Sensory Evaluation - Triangle Test Sample Monitoring</h4>
  	<hr>
- 		
+    <div id="faq" role="tablist" aria-multiselectable="true">
+
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="questionOne">
+          <h5 class="panel-title">
+          <a id="collapsethis" data-toggle="collapse" data-parent="#faq" href="#answerOne" aria-expanded="false" aria-controls="answerOne">
+          See Form Details..
+          </a>
+          
+          </h5>
+        </div>
+        <div id="answerOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="questionOne">
+        
+        <div class="panel-body" id="showformdetails" style="display: block;">
+          <button id="editformdata" type="button" style="float: right; " class="btn btn-info btn-xs">Edit Form Details</button>
+          <strong>Request Rererence Number: </strong><em><?php echo $oneForm[0]->test_request_no; ?></em>
+          <br><strong>Sample Code: </strong><em><?php echo $oneForm[0]->sample_code; ?></em>
+          <br><strong>Sample Description: </strong><em><?php echo $oneForm[0]->product; ?></em>
+          
+          
+          
+        </div>
+
+        <div class="panel-body" id="editformdetails" style="display: none;">
+          
+          <form method="POST">
+              <input type="hidden" id="tt_id" name="ttid" value="<?php echo $oneForm[0]->id; ?>">
+              <input type="hidden" id="ft_id" name="ftid" value="<?php echo $oneForm[0]->form_type_id; ?>">
+                            
+              <div class="form-group">
+                <label>Sample Description</label>
+                <input class="form-control" name="usamplename" placeholder="Sample Description" type="text" value="<?php echo $oneForm[0]->product; ?>">
+              </div>
+              
+              
+              <div class="form-group">
+                <label>Request Reference Number</label>
+                <input class="form-control" name="utrfno" placeholder="R10-2022-SHL-" type="text" value="<?php echo $oneForm[0]->test_request_no; ?>">
+              </div>
+
+              <div class="form-group">
+                <label>Sample Code</label>
+                <input class="form-control" name="utrfcode" placeholder="SHL-" type="text" value="<?php echo $oneForm[0]->sample_code; ?>">
+              </div>
+             
+            
+              <div style="text-align:  right;">
+                <button type="button" id="cancelupdateform" class="btn btn-default">Close</button>
+                <button type="button" id="updateform" class="btn btn-primary save">Update</button>
+              </div>
+            </form>
+          
+        </div>
+        </div>
+      </div>
+
+      </div>	
  </div>
 
 
@@ -337,6 +393,14 @@
 
  </div>
 
+ <div class="col-md-12 "> 
+<br>
+<a target="_blank" href="<?= base_url('shlform/printformone?t_id='.$oneForm[0]->id.'&ftid='.$oneForm[0]->form_type_id) ;?>" ><button type="button" class="btn btn-warning btn-block printTT" >Print</button> </a>
+
+<br>
+</div>
+
+
 
  <div class="alert" style="text-align: center; color: white; position:fixed;top:50%;left:50%;width:500px;height:50px;margin-left:-250px;margin-top:-25px;opacity: 0.7; background-color: gray;display: none;"></div>
 
@@ -610,6 +674,74 @@
 
  	});
 
- 	
+ 	$('#editformdata').on('click',function(){
+    $("#showformdetails").hide();
+    $("#editformdetails").show();
+    
+  });
+
+  $('#cancelupdateform').on('click',function(){
+    $("#showformdetails").show();
+    $("#editformdetails").hide();
+    
+  });
+
+
+  $('#updateform').on('click',function(){
+    var ttid = $("input[name=ttid").val();
+    var ftid = $("input[name=ftid").val();
+    var name = $("input[name=usamplename]").val();
+    
+    var trfno = $("input[name=utrfno]").val();
+    var trfcode = $("input[name=utrfcode]").val();
+    
+    var formdata = new Array(ttid,ftid,name,trfno,trfcode);
+    console.log(formdata);
+    $("#collapsethis").click();
+    $("#showformdetails").show();
+    $("#editformdetails").hide();
+
+    $.ajax({
+      url: "http://"+window.location.host+"/shl/shlform/updateFormDetails",
+      type: "POST",
+      data: {"data":formdata},
+      success: function(data){
+        $("#reloadDiv").load("http://"+window.location.host+"/shl/shlform/getOneForm",{id:data});
+        
+        var fade_in = function() {
+          // $(".alert").fadeOut().empty();
+          $('.alert').text( "Successfully updated form details." );
+          $(".alert").show();
+          $('.modal-backdrop').remove(); // removes the grey overlay.
+        }
+
+        var fade_out = function() {
+          $(".alert").fadeOut().empty();
+          // $(".alert").show();
+        }
+        setTimeout(fade_in,500);
+        setTimeout(fade_out, 3000);
+      },
+      error: function(){
+        
+        var fade_in = function() {
+          // $(".alert").fadeOut().empty();
+          $('.alert').text( "Unable to update form details." );
+          $(".alert").show();
+        }
+
+        var fade_out = function() {
+          $(".alert").fadeOut().empty();
+          // $(".alert").show();
+        }
+        setTimeout(fade_in,500);
+        setTimeout(fade_out, 3000);
+      }
+    });
+
+    
+  });
+
+
 
  </script>

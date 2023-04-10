@@ -65,10 +65,11 @@
         
         <div class="panel-body" id="showformdetails" style="display: block;">
           <button id="editformdata" type="button" style="float: right; " class="btn btn-info btn-xs">Edit Form Details</button>
-          <strong>Request Number: </strong><em><?php echo $oneForm[0]->test_request_no; ?></em>
-          <br><strong>Product Name: </strong><em><?php echo $oneForm[0]->product; ?></em>
+          <strong>Request Rererence Number: </strong><em><?php echo $oneForm[0]->test_request_no; ?></em>
+          <br><strong>Sample Code: </strong><em><?php echo $oneForm[0]->sample_code; ?></em>
+          <br><strong>Sample Description: </strong><em><?php echo $oneForm[0]->product; ?></em>
           
-          <br><strong>Sample Description Code: </strong><em><?php echo $oneForm[0]->sample_code; ?></em>
+          
           
         </div>
 
@@ -77,18 +78,18 @@
           <form method="POST">
               
               <div class="form-group">
-                <label>Product Name</label>
-                <input class="form-control" name="usamplename" placeholder="Product Name" type="text" value="<?php echo $oneForm[0]->product; ?>">
+                <label>Sample Description</label>
+                <input class="form-control" name="usamplename" placeholder="Sample Description" type="text" value="<?php echo $oneForm[0]->product; ?>">
               </div>
               
               
               <div class="form-group">
-                <label>Request Number</label>
+                <label>Request Reference Number</label>
                 <input class="form-control" name="utrfno" placeholder="R10-2022-SHL-" type="text" value="<?php echo $oneForm[0]->test_request_no; ?>">
               </div>
 
               <div class="form-group">
-                <label>Sample Description Code</label>
+                <label>Sample Code</label>
                 <input class="form-control" name="utrfcode" placeholder="SHL-" type="text" value="<?php echo $oneForm[0]->sample_code; ?>">
               </div>
              

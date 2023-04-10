@@ -1821,15 +1821,11 @@ echo '<html>
           echo '<td><u>/</u> Significant difference</td>
           <td><input type="checkbox"> No significant difference</td>';
         }
-        elseif ($right/($left+$right) > .66) {
+        else {
           
           echo '<td><input type="checkbox"> Significant difference</td>
           <td><u>/</u> No significant difference</td>';
-         } else {
-          
-          echo '<td><input type="checkbox"> Significant difference</td>
-          <td><input type="checkbox" > No significant difference</td>';
-        }
+         } 
       
       
       echo '</tr>

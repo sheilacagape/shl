@@ -36,12 +36,12 @@ echo '<html>
       <thead>
         <tr>
           <th colspan="3" style="font-size: 12px; "><strong>Name: </strong>'.$panelistdata[0]->lastname.', '.$panelistdata[0]->firstname.'</th>
-          <th colspan="3" style="font-size: 12px; "><strong>Sample Description: </strong>'.$formdata[0]->product.'</th>
+          <th colspan="3" style="font-size: 12px; "><strong>Sample Code: </strong>'.$formdata[0]->sample_code.'</th>
           
         </tr>
         <tr>
           <th colspan="3" style="font-size: 12px; "><strong>Panelist No.: </strong>'.$count.'</th>
-          <th colspan="3" style="font-size: 12px; "><strong>Date: </strong></th>
+          <th colspan="3" style="font-size: 12px; "><strong>Date: </strong>'.$formdata[0]->date_answered.'</th>
           
         </tr>
       </thead>

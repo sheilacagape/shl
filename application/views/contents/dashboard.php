@@ -3,7 +3,7 @@
 		  <div class="container-fluid">
 		    <!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">
-		      <a style="pointer-events: none; cursor: default;font-weight: bold;color: white; " class="navbar-brand">Shelf Life Laboratory</a>
+		      <a style="pointer-events: none; cursor: default;font-weight: bold;color: white; " class="navbar-brand">Shelf Life Evaluation Laboratory</a>
 		    </div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->

@@ -55,8 +55,8 @@
   <div class="col-md-12 sidetripDetails"> 
     <table class="table">
       <tr>
-        <td><strong>Product Code: </strong></td>
-        <td><em><?php echo $oneForm[0]->product_code; ?></em> </td>
+        <td><strong>Sample Code: </strong></td>
+        <td><em><?php echo $oneForm[0]->sample_code; ?></em> </td>
         <td><strong>Date: </strong> </td>
         <td><em><?php if(isset($answer[0])){ echo $answer[0]->date_answered;} else { echo date("m/d/Y") ;} ?></em> </td>
       </tr>
@@ -65,7 +65,7 @@
         <td><strong>Name: </strong> </td>
         <td><em><?php echo $panelistdata[0]->lastname.", ".$panelistdata[0]->firstname; ?></em> </td>
         <td><strong>Panelist No.: </strong> </td>
-        <td><em><?php echo $panelistdata[0]->user_id; ?></em> </td>
+        <td> </td>
       </tr>
       
     </table>

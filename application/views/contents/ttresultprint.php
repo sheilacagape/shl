@@ -459,18 +459,20 @@ echo '<html>
 
  	<br>
 
-	<p >Remarks: <br><u>
-        '.$ttanswers[0]->tt_panel_remarks.'</u> </p>
-
+	
 	<div>
 
       <table class="table">
-        <tr style="text-align: center; ">
+      	<tr>
+      		<td colspan="2">Remarks: <br><u>
+        '.$ttanswers[0]->tt_panel_remarks.'</u> <br><br></td>
+      	</tr>
+        <tr >
         <br>
           <td style="text-align: left;">Computed by: ________________</td>
           <td style="text-align: right;">Signature/Date: ________________</td>
         </tr>
-        <tr style="text-align: center; ">
+        <tr >
           <td style="text-align: left;">Checked by: ________________</td>
           <td style="text-align: right;">Signature/Date: ________________</td>
         </tr>

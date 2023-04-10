@@ -52,16 +52,48 @@
           </div>
           <div id="answerOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="questionOne">
           <div class="panel-body">
+
+
             <strong>Address: </strong><em><?php echo $user[0]->address; ?></em>
             <br><strong>Contact Number: </strong><em><?php echo $user[0]->contact_number; ?></em>
             <br><strong>Section/Unit: </strong><em><?php echo $user[0]->section_unit; ?></em>
             <br><strong>Sex: </strong><em><?php echo $user[0]->sex; ?></em>
-            
+            <button id="changepass" type="button" style="float: right; " class="btn btn-info btn-xs">Change Password</button>
           </div>
           </div>
         </div>
 
         </div>
+    </div>
+
+    <div class="panel-body" id="editpassword" style="display: none;">
+          
+      <form method="POST">
+          <input type="hidden" id="user_id" name="ttid" value="<?php echo $user[0]->user_id; ?>">
+                        
+          <div class="form-group">
+            <label>Current Password</label>
+            <input class="form-control" name="currpass" placeholder="" type="password" value="">
+          </div>
+          
+          
+          <div class="form-group">
+            <label>New Password</label>
+            <input class="form-control" name="newpass" placeholder="" type="password" value="">
+          </div>
+
+          <div class="form-group">
+            <label>Confirm New Password</label>
+            <input class="form-control" name="confirmnewpass" placeholder="" type="password" value="">
+          </div>
+         
+        
+          <div style="text-align:  right;">
+            <button type="button" id="cancelupdatepassword" class="btn btn-default">Close</button>
+            <button type="button" id="updatepassword" class="btn btn-primary save">Update</button>
+          </div>
+        </form>
+      
     </div>
 
     <div class="nav-list">
@@ -115,5 +147,14 @@
   <script type="text/javascript" src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
 
 <script type="text/javascript">
+  $('#changepass').on('click',function(){
+    $("#editpassword").show();
+    
+  });
 
+  $('#cancelupdatepassword').on('click',function(){
+    $("#editpassword").hide();
+
+    
+  });
 </script>

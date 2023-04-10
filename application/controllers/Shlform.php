@@ -625,6 +625,20 @@ class Shlform extends Main {
 		}
 	}
 
+	public function printformone(){
+		if($this->checkLoggedIn() && ($_SESSION['access']==0)){
+			$id = $this->input->get('t_id');
+			$ftid = $this->input->get('ftid');
+			
+			$data['oneForm'] = $this->Shlform_model->getOneForm($id);
+			$this->db->reconnect();
+			
+			$data['triadcodes'] = $this->Shlform_model->getTriadCodes($data['oneForm'][0]->id);
+			$this->load->view('contents/onettformone',$data);
+			
+		}
+	}
+
 	public function checkLoggedIn(){
 		if(isset($_SESSION['un']) && isset($_SESSION['pass']) == true) {
 			return true;

@@ -21,7 +21,7 @@
  	<div>
       <table class="table">
         <tr>
-          <td>Request Number:</td>
+          <td>Request Reference Number:</td>
           <td><u><?php echo  $pdtanswers[0]->test_request_no?></u></td>
           <td>Analyzed by:</td>
           <td>________________</td>
@@ -29,7 +29,7 @@
           <td>________________</td>
         </tr>
         <tr>
-          <td>Laboratory Code Number:</td>
+          <td>Sample Code:</td>
           <td><u><?php echo  $pdtanswers[0]->sample_code?></u></td>
           <td>Checked by:</td>
           <td>________________</td>
@@ -37,8 +37,8 @@
           <td>________________</td>
         </tr>
         <tr>
-          <td>Sample Description Code:</td>
-          <td><u><?php echo  $pdtanswers[0]->sample_code?></u></td>
+          <td>Sample Description:</td>
+          <td><u><?php echo  $pdtanswers[0]->product?></u></td>
           <td>Date of Analysis:</td>
           <td>________________</td>
           <td></td>
@@ -54,7 +54,7 @@
  	<div class="col-md-12 sidetripDetails"> 
  		<div class="row col-md-12">
  				<input type="hidden"  name="evalid" id="<?php echo $pdtanswers[0]->id; ?>" value="<?php echo $pdtanswers[0]->id; ?>">
-	 				<table class="table table-bordered">
+	 				<table class="table table-bordered" style="text-align:center;"	>
 			 			<thead>
 			 				<tr>
 			 				<th rowspan="3">Panelist</th>
@@ -245,18 +245,12 @@
           	if ($left/($right+$left) > .66) {
           		?>
           		<td><input type="checkbox" checked> Significant difference</td>
-          		<td><input type="checkbox"> No significant difference</td>
-          	<?php } elseif ($right/($left+$right) > .66) {
-          		?>
-          		<td><input type="checkbox"> Significant difference</td>
-          		<td><input type="checkbox" checked> No significant difference</td>
+          		<td><input type="checkbox" disabled> No significant difference</td>
           	<?php } else {
           		?>
-          		<td><input type="checkbox"> Significant difference</td>
-          		<td><input type="checkbox" > No significant difference</td>
-          	<?php
-
-          	}
+          		<td><input type="checkbox" disabled> Significant difference</td>
+          		<td><input type="checkbox" checked> No significant difference</td>
+          	<?php } 
            ?>
           
           
@@ -268,9 +262,9 @@
           	<textarea class="form-control" id="commentsa" name="commentsa" rows="3">
 				    	<?php 
 				    		if ($pdtanswers[0]->pdt_panel_comment_a == "") {
-				    			echo $comment;
+				    			echo trim($comment) ;
 				    		} else {
-				    			echo $pdtanswers[0]->pdt_panel_comment_a;
+				    			echo trim($pdtanswers[0]->pdt_panel_comment_a);
 				    		}
 				    		
 							?>
@@ -281,9 +275,9 @@
           	<textarea class="form-control" id="commentsb" name="commentsb" rows="3">
 				    	<?php 
 				    		if ($pdtanswers[0]->pdt_panel_comment_b == "") {
-				    			echo $comment;
+				    			echo trim($comment);
 				    		} else {
-				    			echo $pdtanswers[0]->pdt_panel_comment_b;
+				    			echo trim($pdtanswers[0]->pdt_panel_comment_b);
 				    		}
 				    		
 							?>
