@@ -41,12 +41,11 @@ echo '<html>
         </tr>
         <tr>
           <th colspan="3" style="font-size: 12px; "><strong>Panelist No.: </strong>'.$count.'</th>
-          <th colspan="3" style="font-size: 12px; "><strong>Date: </strong>'.$formdata[0]->date_answered.'</th>
+          <th colspan="3" style="font-size: 12px; "><strong>Date: </strong>'.$answer[0]->date_answered.'</th>
           
         </tr>
       </thead>
       <tbody>';
-
       
         echo  '
           <tr>
